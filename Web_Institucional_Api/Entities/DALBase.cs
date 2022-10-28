@@ -15,5 +15,16 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
+        public static SqlConnection getConnection(string db)
+        {
+            try
+            {
+                return new SqlConnection("Data Source=srv-sql;Initial Catalog=" + db + ";User ID=general");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

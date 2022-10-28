@@ -22,6 +22,9 @@ namespace Web_Institucional_Api.Entities
         public string contenido_principal { get; set; }
         public List<Secciones> lstSecciones { get; set; }
         public string horario_atension { get; set; }
+        public bool deleted { get; set; }
+        public bool seccion_pricipal { get; set; }
+        public int id_sitio { get; set; }
         public Paginas()
         {
             id = 0;
@@ -37,6 +40,9 @@ namespace Web_Institucional_Api.Entities
             contenido_principal = string.Empty;
             lstSecciones = new List<Secciones>();
             horario_atension = string.Empty; 
+            deleted = false;
+            seccion_pricipal = true;
+            id_sitio = 0;
         }
 
         private static List<Paginas> mapeo(SqlDataReader dr)
@@ -60,6 +66,9 @@ namespace Web_Institucional_Api.Entities
                     if (!dr.IsDBNull(9)) { obj.interno = dr.GetString(9); }
                     if (!dr.IsDBNull(10)) { obj.contenido_principal = dr.GetString(10); }
                     if (!dr.IsDBNull(11)) { obj.horario_atension = dr.GetString(11); }
+                    if (!dr.IsDBNull(12)) { obj.deleted = dr.GetBoolean(12); }
+                    if (!dr.IsDBNull(13)) { obj.id_sitio = dr.GetInt32(13); }
+                    if (!dr.IsDBNull(14)) { obj.seccion_pricipal = dr.GetBoolean(14); }
                     lst.Add(obj);
                 }
             }
@@ -75,7 +84,7 @@ namespace Web_Institucional_Api.Entities
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM Paginas";
+                    cmd.CommandText = "SELECT *FROM Paginas WHERE deleted=0";
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     lst = mapeo(dr);
@@ -87,7 +96,54 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
-
+        public static List<ListaSecciones> GetlstSecciones(int idPage)
+        {
+            try
+            {
+                ListaSecciones obj = null;
+                List<ListaSecciones> lst = new List<ListaSecciones>();
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = @"SELECT
+                                        id,
+	                                    CASE tipo
+		                                    WHEN 1 THEN 'expansionpanel'
+		                                    WHEN 2 THEN 'tabpanel'
+		                                    WHEN 3 THEN 'tabpanelvertical'
+		                                    WHEN 4 THEN 'geleria'
+		                                    WHEN 5 THEN 'agenda'
+		                                    WHEN 6 THEN 'news'
+		                                    WHEN 7 THEN 'htmllibre'
+		                                    WHEN 8 THEN 'cards'
+                                            WHEN 9 THEN 'carrusel'
+	                                    END, 
+                                        background_color
+                                    FROM Secciones
+                                    WHERE id_page=@id_page AND activo=1 AND deleted=0 ORDER BY orden";
+                    cmd.Parameters.AddWithValue("@id_page", idPage);
+                    cmd.Connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            obj = new ListaSecciones();
+                            obj.id = dr.GetInt32(0);
+                            obj.tipo = dr.GetString(1);
+                            obj.background_color = dr.GetString(2); 
+                            lst.Add(obj);
+                        }
+                    }                      
+                    return lst;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static Paginas getByPk(
         int id)
         {
@@ -134,6 +190,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", telefono");
                 sql.AppendLine(", interno");
                 sql.AppendLine(", contenido_principal");
+                sql.AppendLine(", seccion_pricipal");
                 sql.AppendLine(")");
                 sql.AppendLine("VALUES");
                 sql.AppendLine("(");
@@ -147,6 +204,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", @telefono");
                 sql.AppendLine(", @interno");
                 sql.AppendLine(", @contenido_principal");
+                sql.AppendLine(", 1");
                 sql.AppendLine(")");
                 sql.AppendLine("SELECT SCOPE_IDENTITY()");
                 using (SqlConnection con = getConnection())
@@ -309,6 +367,7 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
+   
         public static void updateContenidoPrincipal(Paginas obj)
         {
             try
@@ -335,12 +394,37 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
+        public static void updateActivaContenidoPrincipal(int id, bool activa)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("UPDATE  Paginas SET");
+                sql.AppendLine("seccion_pricipal=@seccion_pricipal");
+                sql.AppendLine("WHERE");
+                sql.AppendLine("id=@id");
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@seccion_pricipal", activa);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static void delete(int id)
         {
             try
             {
                 StringBuilder sql = new StringBuilder();
-                sql.AppendLine("DELETE  Paginas ");
+                sql.AppendLine("UPDATE Paginas SET deleted=1");
                 sql.AppendLine("WHERE");
                 sql.AppendLine("id=@id");
                 using (SqlConnection con = getConnection())

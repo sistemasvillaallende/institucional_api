@@ -52,6 +52,18 @@ namespace Web_Institucional_Api.Services
             }
         }
 
+        public List<ListaSecciones> lstSecciones(int idPagina)
+        {
+            try
+            {
+                return Entities.Paginas.GetlstSecciones(idPagina);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<Paginas> read()
         {
             try
@@ -69,6 +81,18 @@ namespace Web_Institucional_Api.Services
             try
             {
                 Entities.Paginas.update(obj);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void updateActivaContenidoPrincipal(int id, bool activa)
+        {
+            try
+            {
+                Entities.Paginas.updateActivaContenidoPrincipal(id, activa);
             }
             catch (Exception ex)
             {

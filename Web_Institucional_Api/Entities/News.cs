@@ -21,6 +21,8 @@ namespace Web_Institucional_Api.Entities
         public int orden { get; set; }
         public List<images_x_news> lstImages { get; set; }
         public List<files_x_news> lstFiles { get; set; }
+        public bool deleted { get; set; }
+        public int id_page { get; set; }
         public News()
         {
             id = 0;
@@ -34,6 +36,7 @@ namespace Web_Institucional_Api.Entities
             orden = 0;
             lstFiles = new List<files_x_news>();    
             lstImages = new List<images_x_news>();
+            deleted= false; 
         }
 
         private static List<News> mapeo(SqlDataReader dr)
@@ -54,7 +57,8 @@ namespace Web_Institucional_Api.Entities
                     if (!dr.IsDBNull(6)) { obj.seccion = dr.GetInt32(6); }
                     if (!dr.IsDBNull(7)) { obj.pricipal = dr.GetBoolean(7); }
                     if (!dr.IsDBNull(8)) { obj.orden = dr.GetInt32(8); }
-
+                    if (!dr.IsDBNull(9)) { obj.deleted = dr.GetBoolean(9); }
+                    if (!dr.IsDBNull(10)) { obj.id_page = dr.GetInt32(10); }
                     obj._fecha = obj.fecha.ToShortDateString();
                     lst.Add(obj);
                 }
@@ -79,6 +83,8 @@ namespace Web_Institucional_Api.Entities
                     if (!dr.IsDBNull(6)) { obj.seccion = dr.GetInt32(6); }
                     if (!dr.IsDBNull(7)) { obj.pricipal = dr.GetBoolean(7); }
                     if (!dr.IsDBNull(8)) { obj.orden = dr.GetInt32(8); }
+                    if (!dr.IsDBNull(9)) { obj.deleted = dr.GetBoolean(9); }
+                    if (!dr.IsDBNull(10)) { obj.id_page = dr.GetInt32(10); }
                     obj._fecha = obj.fecha.ToShortDateString();
                     obj.lstImages = images_x_news.read(obj.id);
                     obj.lstFiles = files_x_news.read(obj.id);
@@ -96,11 +102,36 @@ namespace Web_Institucional_Api.Entities
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM News ORDER BY orden";
+                    cmd.CommandText = @"SELECT A.*, B.id_page FROM News A
+                                        INNER JOIN Secciones B ON A.seccion = B.id
+                                        WHERE deleted = 0 ORDER BY orden";
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     lst = mapeo(dr);
                     return lst;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static int getMaxOrden(int idSeccion)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("SELECT ISNULL(MAX(orden),0) FROM News");
+                sql.AppendLine("WHERE seccion=@seccion AND deleted=0");
+
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@seccion", idSeccion);
+                    cmd.Connection.Open();
+                    return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (Exception ex)
@@ -117,7 +148,33 @@ namespace Web_Institucional_Api.Entities
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM News WHERE seccion=@seccion ORDER BY orden";
+                    cmd.CommandText = @"SELECT A.*, B.id_page FROM News A
+                                        FULL JOIN Secciones B ON A.seccion=B.id
+                                        WHERE A.seccion=@seccion AND A.deleted=0 ORDER BY orden";
+                    cmd.Parameters.AddWithValue("@seccion", seccion);
+                    cmd.Connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    lst = mapeo(dr);
+                    return lst;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static List<News> getBySeccionActivas(int seccion)
+        {
+            try
+            {
+                List<News> lst = new List<News>();
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = @"SELECT A.*, B.id_page FROM News A
+                                        INNER JOIN Secciones B ON A.seccion=B.id
+                                        WHERE A.seccion=@seccion AND deleted=0 AND activo=1 ORDER BY orden";
                     cmd.Parameters.AddWithValue("@seccion", seccion);
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -139,7 +196,32 @@ namespace Web_Institucional_Api.Entities
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM News WHERE pricipal=1 ORDER BY orden";
+                    cmd.CommandText = @"SELECT A.*, B.id_page FROM News A
+                                        FULL JOIN Secciones B ON A.seccion=B.id
+                                        WHERE A.pricipal=1 AND A.deleted=0 ORDER BY orden";
+                    cmd.Connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    lst = mapeo(dr);
+                    return lst;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static List<News> readHomeActivas()
+        {
+            try
+            {
+                List<News> lst = new List<News>();
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = @"SELECT A.*, B.id_page FROM News A
+                                        INNER JOIN Secciones B ON A.seccion=B.id
+                                        WHERE principal=1 AND deleted=0 AND activo=1 ORDER BY orden";
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     lst = mapeo(dr);
@@ -156,15 +238,14 @@ namespace Web_Institucional_Api.Entities
         {
             try
             {
-                StringBuilder sql = new StringBuilder();
-                sql.AppendLine("SELECT *FROM News WHERE");
-                sql.AppendLine("id = @id");
                 News obj = null;
                 using (SqlConnection con = getConnection())
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = sql.ToString();
+                    cmd.CommandText = @"SELECT A.*, B.id_page FROM News A
+                                        FULL JOIN Secciones B ON A.seccion=B.id
+                                        WHERE A.id=@id";
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -194,6 +275,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", seccion");
                 sql.AppendLine(", pricipal");
                 sql.AppendLine(", orden");
+                sql.AppendLine(", deleted");
                 sql.AppendLine(")");
                 sql.AppendLine("VALUES");
                 sql.AppendLine("(");
@@ -205,6 +287,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", @seccion");
                 sql.AppendLine(", @pricipal");
                 sql.AppendLine(", @orden");
+                sql.AppendLine(", 0");
                 sql.AppendLine(")");
                 sql.AppendLine("SELECT SCOPE_IDENTITY()");
                 using (SqlConnection con = getConnection())
@@ -238,12 +321,10 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine("UPDATE  News SET");
                 sql.AppendLine("titulo=@titulo");
                 sql.AppendLine(", fecha=@fecha");
-                sql.AppendLine(", img=@img");
+                if(obj.img != string.Empty)
+                    sql.AppendLine(", img=@img");
                 sql.AppendLine(", cuerpo=@cuerpo");
-                sql.AppendLine(", activo=@activo");
-                sql.AppendLine(", seccion=@seccion");
                 sql.AppendLine(", pricipal=@pricipal");
-                sql.AppendLine(", orden=@orden");
                 sql.AppendLine("WHERE");
                 sql.AppendLine("id=@id");
                 using (SqlConnection con = getConnection())
@@ -253,12 +334,10 @@ namespace Web_Institucional_Api.Entities
                     cmd.CommandText = sql.ToString();
                     cmd.Parameters.AddWithValue("@titulo", obj.titulo);
                     cmd.Parameters.AddWithValue("@fecha", obj.fecha);
-                    cmd.Parameters.AddWithValue("@img", obj.img);
+                    if (obj.img != string.Empty)
+                        cmd.Parameters.AddWithValue("@img", obj.img);
                     cmd.Parameters.AddWithValue("@cuerpo", obj.cuerpo);
-                    cmd.Parameters.AddWithValue("@activo", obj.activo);
-                    cmd.Parameters.AddWithValue("@seccion", obj.seccion);
                     cmd.Parameters.AddWithValue("@pricipal", obj.pricipal);
-                    cmd.Parameters.AddWithValue("@orden", obj.orden);
                     cmd.Parameters.AddWithValue("@id", obj.id);
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
@@ -275,7 +354,7 @@ namespace Web_Institucional_Api.Entities
             try
             {
                 StringBuilder sql = new StringBuilder();
-                sql.AppendLine("DELETE  News ");
+                sql.AppendLine("UPDATE News SET deleted=1");
                 sql.AppendLine("WHERE");
                 sql.AppendLine("id=@id");
                 using (SqlConnection con = getConnection())
@@ -293,7 +372,55 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
-
+        public static void activaDesactiva(int id, bool activo)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("UPDATE News SET activo=@activo");
+                sql.AppendLine("WHERE");
+                sql.AppendLine("id=@id");
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@activo", activo);
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void updateOrden(int id, int idOrden)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("UPDATE News SET");
+                sql.AppendLine("orden=@orden");
+                sql.AppendLine("WHERE");
+                sql.AppendLine("id=@id");
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@orden", idOrden);
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
 

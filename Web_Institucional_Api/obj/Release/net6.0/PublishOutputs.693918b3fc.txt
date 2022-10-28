@@ -6,6 +6,7 @@ C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\PubTmp
 C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\PubTmp\Out\Web_Institucional_Api.runtimeconfig.json
 C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\PubTmp\Out\Web_Institucional_Api.pdb
 C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

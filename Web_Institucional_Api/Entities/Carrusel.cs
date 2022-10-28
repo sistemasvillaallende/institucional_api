@@ -20,7 +20,10 @@ namespace Web_Institucional_Api.Entities
         public string callToActionLink { get; set; }
         public bool activo { get; set; }
         public string imgDerecha { get; set; }
-
+        public int id_page { get; set; }
+        public int orden { get; set; }
+        public int id_page_destino { get; set; }
+        public string callToActionTarget { get; set; }
         public Carrusel()
         {
             id = 0;
@@ -34,6 +37,10 @@ namespace Web_Institucional_Api.Entities
             callToActionLink = string.Empty;
             activo = false;
             imgDerecha = string.Empty;
+            id_page = 0;
+            orden = 0;
+            id_page_destino = 0;
+            callToActionTarget = string.Empty;
         }
 
         private static List<Carrusel> mapeo(SqlDataReader dr)
@@ -56,13 +63,17 @@ namespace Web_Institucional_Api.Entities
                     if (!dr.IsDBNull(8)) { obj.callToActionLink = dr.GetString(8); }
                     if (!dr.IsDBNull(9)) { obj.activo = dr.GetBoolean(9); }
                     if (!dr.IsDBNull(10)) { obj.imgDerecha = dr.GetString(10); }
+                    if (!dr.IsDBNull(11)) { obj.id_page = dr.GetInt32(11); }
+                    if (!dr.IsDBNull(12)) { obj.orden = dr.GetInt32(12); }
+                    if (!dr.IsDBNull(13)) { obj.id_page_destino = dr.GetInt32(13); }
+                    if (!dr.IsDBNull(14)) { obj.callToActionTarget = dr.GetString(14); }
                     lst.Add(obj);
                 }
             }
             return lst;
         }
 
-        public static List<Carrusel> read()
+        public static List<Carrusel> read(int id_page)
         {
             try
             {
@@ -71,7 +82,8 @@ namespace Web_Institucional_Api.Entities
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM Carrusel";
+                    cmd.CommandText = "SELECT *FROM Carrusel WHERE id_page=@id_page ORDER BY orden";
+                    cmd.Parameters.AddWithValue("@id_page", id_page);
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     lst = mapeo(dr);
@@ -83,7 +95,7 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
-        public static List<Carrusel> readActivos()
+        public static List<Carrusel> readActivos(int id_page)
         {
             try
             {
@@ -92,7 +104,8 @@ namespace Web_Institucional_Api.Entities
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM Carrusel WHERE activo = 1";
+                    cmd.CommandText = "SELECT *FROM Carrusel WHERE activo = 1 AND id_page=@id_page ORDER BY orden";
+                    cmd.Parameters.AddWithValue("@id_page", id_page);
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     lst = mapeo(dr);
@@ -104,8 +117,7 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
-        public static Carrusel getByPk(
-        int id)
+        public static Carrusel getByPk(int id)
         {
             try
             {
@@ -148,6 +160,10 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", callToActionLink");
                 sql.AppendLine(", activo");
                 sql.AppendLine(", imgDerecha");
+                sql.AppendLine(", id_page");
+                sql.AppendLine(", orden");
+                sql.AppendLine(", id_page_destino");
+                sql.AppendLine(", callToActionTarget"); 
                 sql.AppendLine(")");
                 sql.AppendLine("VALUES");
                 sql.AppendLine("(");
@@ -161,6 +177,10 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", @callToActionLink");
                 sql.AppendLine(", @activo");
                 sql.AppendLine(", @imgDerecha");
+                sql.AppendLine(", @id_page");
+                sql.AppendLine(", @orden");
+                sql.AppendLine(", @id_page_destino");
+                sql.AppendLine(", @callToActionTarget");
                 sql.AppendLine(")");
                 sql.AppendLine("SELECT SCOPE_IDENTITY()");
                 using (SqlConnection con = getConnection())
@@ -178,6 +198,10 @@ namespace Web_Institucional_Api.Entities
                     cmd.Parameters.AddWithValue("@callToActionLink", obj.callToActionLink);
                     cmd.Parameters.AddWithValue("@activo", obj.activo);
                     cmd.Parameters.AddWithValue("@imgDerecha", obj.imgDerecha);
+                    cmd.Parameters.AddWithValue("@id_page", obj.id_page);
+                    cmd.Parameters.AddWithValue("@orden", obj.orden);
+                    cmd.Parameters.AddWithValue("@id_page_destino", obj.id_page_destino);
+                    cmd.Parameters.AddWithValue("@callToActionTarget", obj.callToActionTarget);
                     cmd.Connection.Open();
                     return Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -194,15 +218,14 @@ namespace Web_Institucional_Api.Entities
                 StringBuilder sql = new StringBuilder();
                 sql.AppendLine("UPDATE  Carrusel SET");
                 sql.AppendLine("nombre=@nombre");
-                sql.AppendLine(", img=@img");
                 sql.AppendLine(", resenia=@resenia");
                 sql.AppendLine(", titulo=@titulo");
                 sql.AppendLine(", bajada=@bajada");
                 sql.AppendLine(", callToAction=@callToAction");
                 sql.AppendLine(", callToActionTipo=@callToActionTipo");
                 sql.AppendLine(", callToActionLink=@callToActionLink");
-                sql.AppendLine(", activo=@activo");
-                sql.AppendLine(", imgDerecha=@imgDerecha");
+                sql.AppendLine(", id_page_destino=@id_page_destino");
+                sql.AppendLine(", callToActionTarget=@callToActionTarget");
                 sql.AppendLine("WHERE");
                 sql.AppendLine("id=@id");
                 using (SqlConnection con = getConnection())
@@ -211,16 +234,113 @@ namespace Web_Institucional_Api.Entities
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = sql.ToString();
                     cmd.Parameters.AddWithValue("@nombre", obj.nombre);
-                    cmd.Parameters.AddWithValue("@img", obj.img);
                     cmd.Parameters.AddWithValue("@resenia", obj.resenia);
                     cmd.Parameters.AddWithValue("@titulo", obj.titulo);
                     cmd.Parameters.AddWithValue("@bajada", obj.bajada);
                     cmd.Parameters.AddWithValue("@callToAction", obj.callToAction);
                     cmd.Parameters.AddWithValue("@callToActionTipo", obj.callToActionTipo);
                     cmd.Parameters.AddWithValue("@callToActionLink", obj.callToActionLink);
-                    cmd.Parameters.AddWithValue("@activo", obj.activo);
-                    cmd.Parameters.AddWithValue("@imgDerecha", obj.imgDerecha);
                     cmd.Parameters.AddWithValue("@id", obj.id);
+                    cmd.Parameters.AddWithValue("@id_page_destino", obj.id_page_destino);
+                    cmd.Parameters.AddWithValue("@callToActionTarget", obj.callToActionTarget);
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static int getMaxOrden(int id_page)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("SELECT ISNULL(MAX(orden),0) FROM Carrusel");
+                sql.AppendLine("WHERE id_page=@id_page");
+
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@id_page", id_page);
+                    cmd.Connection.Open();
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void setOrden(int id, int orden)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("UPDATE Carrusel SET");
+                sql.AppendLine("orden=@orden");
+                sql.AppendLine("WHERE");
+                sql.AppendLine("id=@id");
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@orden", orden);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void setImgFondo(int id, string img)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("UPDATE Carrusel SET");
+                sql.AppendLine("img=@img");
+                sql.AppendLine("WHERE");
+                sql.AppendLine("id=@id");
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@img", img);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void setImgDerecha(int id, string img)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("UPDATE Carrusel SET");
+                sql.AppendLine("imgDerecha=@imgDerecha");
+                sql.AppendLine("WHERE");
+                sql.AppendLine("id=@id");
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@imgDerecha", img);
+                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
                 }

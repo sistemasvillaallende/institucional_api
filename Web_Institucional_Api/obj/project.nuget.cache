@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8lKkxc+3TgPioAw9RZz8orguRZs6wn4Gxf0UgnIDVB32AMprJI3G2FKB9fiJJ6cQacMHj5WVlRPZR89cJsjPRQ==",
+  "dgSpecHash": "aJuAJThRZnTMiCq/8VuCmYMs6QCpIMqdb1oDrnI9o50MHyJVC6D0peBtKhUNKMBY5tPHLg9z0OiXX3CqWLq1AQ==",
   "success": true,
   "projectFilePath": "C:\\NET2018\\Web_Institucional_Api\\Web_Institucional_Api\\Web_Institucional_Api.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\mvelez\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\mvelez\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.15.1\\microsoft.visualstudio.azure.containers.tools.targets.1.15.1.nupkg.sha512",
     "C:\\Users\\mvelez\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\mvelez\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\mvelez\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\mvelez\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\mvelez\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

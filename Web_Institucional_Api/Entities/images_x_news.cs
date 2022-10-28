@@ -14,7 +14,7 @@ namespace Web_Institucional_Api.Entities
         public string img { get; set; }
         public int categoria { get; set; }
         public string nombre { get; set; }
-
+        public int orden { get; set; }
         public images_x_news()
         {
             id = 0;
@@ -22,6 +22,7 @@ namespace Web_Institucional_Api.Entities
             img = string.Empty;
             categoria = 0;
             nombre = string.Empty;
+            orden = 0;
         }
 
         private static List<images_x_news> mapeo(SqlDataReader dr)
@@ -38,6 +39,7 @@ namespace Web_Institucional_Api.Entities
                     if (!dr.IsDBNull(2)) { obj.img = dr.GetString(2); }
                     if (!dr.IsDBNull(3)) { obj.categoria = dr.GetInt32(3); }
                     if (!dr.IsDBNull(4)) { obj.nombre = dr.GetString(4); }
+                    if (!dr.IsDBNull(5)) { obj.orden = dr.GetInt32(5); }
                     lst.Add(obj);
                 }
             }
@@ -53,7 +55,7 @@ namespace Web_Institucional_Api.Entities
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM images_x_news WHERE idNews=@idNews";
+                    cmd.CommandText = "SELECT *FROM images_x_news WHERE idNews=@idNews ORDER BY orden";
                     cmd.Parameters.AddWithValue("@idNews", idNews);
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -95,7 +97,29 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
+        public static int getMaxOrden(int idNews)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("SELECT ISNULL(MAX(orden),0) FROM images_x_news");
+                sql.AppendLine("WHERE idNews=@idNews");
 
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@idNews", idNews);
+                    cmd.Connection.Open();
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static int insert(images_x_news obj)
         {
             try
@@ -106,6 +130,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", img");
                 sql.AppendLine(", categoria");
                 sql.AppendLine(", nombre");
+                sql.AppendLine(", orden");
                 sql.AppendLine(")");
                 sql.AppendLine("VALUES");
                 sql.AppendLine("(");
@@ -113,6 +138,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", @img");
                 sql.AppendLine(", @categoria");
                 sql.AppendLine(", @nombre");
+                sql.AppendLine(", @orden");
                 sql.AppendLine(")");
                 sql.AppendLine("SELECT SCOPE_IDENTITY()");
                 using (SqlConnection con = getConnection())
@@ -124,6 +150,7 @@ namespace Web_Institucional_Api.Entities
                     cmd.Parameters.AddWithValue("@img", obj.img);
                     cmd.Parameters.AddWithValue("@categoria", obj.categoria);
                     cmd.Parameters.AddWithValue("@nombre", obj.nombre);
+                    cmd.Parameters.AddWithValue("@orden", obj.orden);
                     cmd.Connection.Open();
                     return Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -163,7 +190,31 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
-
+        public static void setOrden(int id, int orden)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("UPDATE images_x_news SET");
+                sql.AppendLine("orden=@orden");
+                sql.AppendLine("WHERE");
+                sql.AppendLine("id=@id");
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@orden", orden);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static void delete(int id)
         {
             try

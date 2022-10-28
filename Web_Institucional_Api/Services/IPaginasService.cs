@@ -14,5 +14,7 @@ namespace Web_Institucional_Api.Services
         public void updateDatosGenerales(Paginas obj);
         public void updateNombreImagen(Paginas obj);
         public void updateContenidoPrincipal(Paginas obj);
+        public void updateActivaContenidoPrincipal(int id, bool activa);
+        public List<ListaSecciones> lstSecciones(int idPagina);
     }
 }

@@ -23,6 +23,15 @@ namespace Web_Institucional_Api
             services.AddScoped<INewsService, NewsService>();
             services.AddScoped<IAutoridadesService, AutoridadesServece>();
             services.AddScoped<IPaginasService, PaginasService>();
+            services.AddScoped<ISeccionesService, SeccionesService>();
+            services.AddScoped<IInstitucionalService, InstitucionalService>();
+            services.AddScoped<IRedesSocialesService, RedesSocialesService>();
+            services.AddScoped<IArchivosContenidoService, ArchivosContenidoService>();
+            services.AddScoped<IMenuService, MenuService>();
+            services.AddScoped<INoticiaPrincipalService, NoticiaPrincipalService>();
+            services.AddScoped<IEventoService, EventoService>();
+            services.AddScoped<ICardsService, CardService>();
+            services.AddScoped<ILoginServices, LoginServices>();
             services.AddCors();
 
         }
