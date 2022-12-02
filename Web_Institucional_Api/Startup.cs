@@ -66,7 +66,7 @@ namespace Web_Institucional_Api
                .AllowAnyMethod()
                .AllowAnyHeader());
             Console.WriteLine(env.EnvironmentName);
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

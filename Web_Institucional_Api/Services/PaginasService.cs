@@ -100,6 +100,18 @@ namespace Web_Institucional_Api.Services
             }
         }
 
+        public void updateActivaContenidoPrincipalBanner(int id, bool activa)
+        {
+            try
+            {
+                Entities.Paginas.updateActivaContenidoPrincipalBanner(id, activa);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void updateContenidoPrincipal(Paginas obj)
         {
             try

@@ -35,3 +35,5 @@ C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\Web_In
 C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\Web_Institucional_Api.genruntimeconfig.cache
 C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\ref\Web_Institucional_Api.dll
 C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\bin\Release\net6.0\Newtonsoft.Json.dll
+C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\Web_Institucional_Api.RazorAssemblyInfo.cache
+C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\obj\Release\net6.0\Web_Institucional_Api.RazorAssemblyInfo.cs

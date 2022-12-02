@@ -68,6 +68,13 @@ namespace Web_Institucional_Api.Controllers
             return Ok(objr);
         }
         [HttpPost]
+        public IActionResult updateActivaContenidoPrincipalBanner(Entities.Paginas obj)
+        {
+            _paginasService.updateActivaContenidoPrincipalBanner(obj.id, obj.seccion_principal_banner);
+            var objr = _paginasService.getByPk(obj.id);
+            return Ok(objr);
+        }
+        [HttpPost]
         public IActionResult updateDatosGenerales(Entities.Paginas obj)
         {
             _paginasService.updateDatosGenerales(obj);

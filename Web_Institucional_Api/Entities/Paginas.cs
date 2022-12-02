@@ -25,6 +25,8 @@ namespace Web_Institucional_Api.Entities
         public bool deleted { get; set; }
         public bool seccion_pricipal { get; set; }
         public int id_sitio { get; set; }
+        public bool seccion_principal_banner { get; set; }
+
         public Paginas()
         {
             id = 0;
@@ -43,6 +45,7 @@ namespace Web_Institucional_Api.Entities
             deleted = false;
             seccion_pricipal = true;
             id_sitio = 0;
+            seccion_principal_banner = false;   
         }
 
         private static List<Paginas> mapeo(SqlDataReader dr)
@@ -69,6 +72,7 @@ namespace Web_Institucional_Api.Entities
                     if (!dr.IsDBNull(12)) { obj.deleted = dr.GetBoolean(12); }
                     if (!dr.IsDBNull(13)) { obj.id_sitio = dr.GetInt32(13); }
                     if (!dr.IsDBNull(14)) { obj.seccion_pricipal = dr.GetBoolean(14); }
+                    if (!dr.IsDBNull(15)) { obj.seccion_principal_banner = dr.GetBoolean(15); }
                     lst.Add(obj);
                 }
             }
@@ -191,6 +195,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", interno");
                 sql.AppendLine(", contenido_principal");
                 sql.AppendLine(", seccion_pricipal");
+                sql.AppendLine(", seccion_principal_banner");
                 sql.AppendLine(")");
                 sql.AppendLine("VALUES");
                 sql.AppendLine("(");
@@ -204,6 +209,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", @telefono");
                 sql.AppendLine(", @interno");
                 sql.AppendLine(", @contenido_principal");
+                sql.AppendLine(", 1");
                 sql.AppendLine(", 1");
                 sql.AppendLine(")");
                 sql.AppendLine("SELECT SCOPE_IDENTITY()");
@@ -409,6 +415,31 @@ namespace Web_Institucional_Api.Entities
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = sql.ToString();
                     cmd.Parameters.AddWithValue("@seccion_pricipal", activa);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void updateActivaContenidoPrincipalBanner(int id, bool activa)
+        {
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.AppendLine("UPDATE  Paginas SET");
+                sql.AppendLine("seccion_principal_banner=@seccion_principal_banner");
+                sql.AppendLine("WHERE");
+                sql.AppendLine("id=@id");
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = sql.ToString();
+                    cmd.Parameters.AddWithValue("@seccion_principal_banner", activa);
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
