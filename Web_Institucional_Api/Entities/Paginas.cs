@@ -122,6 +122,8 @@ namespace Web_Institucional_Api.Entities
 		                                    WHEN 7 THEN 'htmllibre'
 		                                    WHEN 8 THEN 'cards'
                                             WHEN 9 THEN 'carrusel'
+                                            WHEN 10 THEN 'cards2'
+                                            WHEN 11 THEN 'timeline'
 	                                    END, 
                                         background_color
                                     FROM Secciones

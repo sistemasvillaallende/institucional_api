@@ -95,6 +95,12 @@ namespace Web_Institucional_Api.Entities
                         case 9:
                             obj._tipo = "Carrusel";
                             break;
+                        case 10:
+                            obj._tipo = "Tarjetas Autoridades";
+                            break;
+                        case 11:
+                            obj._tipo = "Linea de Tiempo";
+                            break;
                         default:
                             break;
                     }

@@ -22,6 +22,7 @@ namespace Web_Institucional_Api.Entities
         public int id_page { get; set; }
         public string callToActionTipo { get; set; }
         public int id_page_destino { get; set; }
+        public string subtitulo { get; set; }
         public Cards()
         {
             id = 0;
@@ -37,6 +38,7 @@ namespace Web_Institucional_Api.Entities
             id_page = 0;
             callToActionTipo = string.Empty;
             id_page_destino = 0;
+            subtitulo = string.Empty;
         }
 
         private static List<Cards> mapeo(SqlDataReader dr)
@@ -60,7 +62,8 @@ namespace Web_Institucional_Api.Entities
                     if (!dr.IsDBNull(9)) { obj.id_seccion = dr.GetInt32(9); }
                     if (!dr.IsDBNull(10)) { obj.callToActionTipo = dr.GetString(10); }
                     if (!dr.IsDBNull(11)) { obj.id_page_destino = dr.GetInt32(11); }
-                    if (!dr.IsDBNull(12)) { obj.id_page = dr.GetInt32(12); }
+                    if (!dr.IsDBNull(12)) { obj.subtitulo = dr.GetString(12); }
+                    if (!dr.IsDBNull(13)) { obj.id_page = dr.GetInt32(13); }
                     lst.Add(obj);
                 }
             }
@@ -186,6 +189,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", orden");
                 sql.AppendLine(", id_seccion");
                 sql.AppendLine(", id_page_destino");
+                sql.AppendLine(", subtitulo");
                 sql.AppendLine(")");
                 sql.AppendLine("VALUES");
                 sql.AppendLine("(");
@@ -200,6 +204,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", @orden");
                 sql.AppendLine(", @id_seccion");
                 sql.AppendLine(", @id_page_destino");
+                sql.AppendLine(", @subtitulo");
                 sql.AppendLine(")");
                 sql.AppendLine("SELECT SCOPE_IDENTITY()");
                 using (SqlConnection con = getConnection())
@@ -218,6 +223,7 @@ namespace Web_Institucional_Api.Entities
                     cmd.Parameters.AddWithValue("@id_seccion", obj.id_seccion);
                     cmd.Parameters.AddWithValue("@id_page_destino", obj.id_page_destino);
                     cmd.Parameters.AddWithValue("@callToActionTipo", obj.callToActionTipo);
+                    cmd.Parameters.AddWithValue("@subtitulo", obj.subtitulo);
                     cmd.Connection.Open();
                     return Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -241,6 +247,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", CallToActionTarget=@CallToActionTarget");
                 sql.AppendLine(", callToActionTipo=@callToActionTipo");
                 sql.AppendLine(", id_page_destino=@id_page_destino");
+                sql.AppendLine(", subtitulo=@subtitulo");
                 sql.AppendLine("WHERE");
                 sql.AppendLine("id=@id");
                 using (SqlConnection con = getConnection())
@@ -256,6 +263,7 @@ namespace Web_Institucional_Api.Entities
                     cmd.Parameters.AddWithValue("@CallToActionTarget", obj.callToActionTarget);
                     cmd.Parameters.AddWithValue("@id_page_destino", obj.id_page_destino);
                     cmd.Parameters.AddWithValue("@callToActionTipo", obj.callToActionTipo);
+                    cmd.Parameters.AddWithValue("@subtitulo", obj.subtitulo);
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
                 }

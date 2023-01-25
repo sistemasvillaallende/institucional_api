@@ -60,6 +60,71 @@
     <None Include="wwwroot\Assets\sec_gobierno.jpg" />
     <None Include="wwwroot\Assets\Sec_obras.jpeg" />
     <None Include="wwwroot\Assets\Sec_servicios.jfif" />
+    <None Include="wwwroot\ExportSites\css\all.min.css" />
+    <None Include="wwwroot\ExportSites\css\animate.min.css" />
+    <None Include="wwwroot\ExportSites\css\bootstrap-select.min.css" />
+    <None Include="wwwroot\ExportSites\css\bootstrap.min.css" />
+    <None Include="wwwroot\ExportSites\css\css2.css" />
+    <None Include="wwwroot\ExportSites\css\custom-animate.css" />
+    <None Include="wwwroot\ExportSites\css\demo.css" />
+    <None Include="wwwroot\ExportSites\css\fontawesome\css\all.min.css" />
+    <None Include="wwwroot\ExportSites\css\fontawesome\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\ExportSites\css\fontawesome\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\ExportSites\css\fonts\icomoon.eot" />
+    <None Include="wwwroot\ExportSites\css\fonts\icomoon.svg" />
+    <None Include="wwwroot\ExportSites\css\fonts\icomoon.ttf" />
+    <None Include="wwwroot\ExportSites\css\fonts\icomoon.woff" />
+    <None Include="wwwroot\ExportSites\css\icon-moon.css" />
+    <None Include="wwwroot\ExportSites\css\jarallax.css" />
+    <None Include="wwwroot\ExportSites\css\jquery-ui.css" />
+    <None Include="wwwroot\ExportSites\css\jquery.bxslider.css" />
+    <None Include="wwwroot\ExportSites\css\jquery.magnific-popup.css" />
+    <None Include="wwwroot\ExportSites\css\nouislider.min.css" />
+    <None Include="wwwroot\ExportSites\css\nouislider.pips.css" />
+    <None Include="wwwroot\ExportSites\css\odometer.min.css" />
+    <None Include="wwwroot\ExportSites\css\owl.carousel.min.css" />
+    <None Include="wwwroot\ExportSites\css\owl.theme.default.min.css" />
+    <None Include="wwwroot\ExportSites\css\roofsie-responsive.css" />
+    <None Include="wwwroot\ExportSites\css\roofsie.css" />
+    <None Include="wwwroot\ExportSites\css\stacktable.css" />
+    <None Include="wwwroot\ExportSites\css\style.css" />
+    <None Include="wwwroot\ExportSites\css\stylesheet.css" />
+    <None Include="wwwroot\ExportSites\css\swiper.min.css" />
+    <None Include="wwwroot\ExportSites\css\timePicker.css" />
+    <None Include="wwwroot\ExportSites\css\tiny-slider.min.css" />
+    <None Include="wwwroot\ExportSites\css\vegas.min.css" />
+    <None Include="wwwroot\ExportSites\js\bootstrap-select.min.js" />
+    <None Include="wwwroot\ExportSites\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\ExportSites\js\countdown.min.js" />
+    <None Include="wwwroot\ExportSites\js\demo.js" />
+    <None Include="wwwroot\ExportSites\js\isotope.js" />
+    <None Include="wwwroot\ExportSites\js\jarallax.min.js" />
+    <None Include="wwwroot\ExportSites\js\jquery-3.6.0.min.js" />
+    <None Include="wwwroot\ExportSites\js\jquery-ui.js" />
+    <None Include="wwwroot\ExportSites\js\jquery.ajaxchimp.min.js" />
+    <None Include="wwwroot\ExportSites\js\jquery.appear.min.js" />
+    <None Include="wwwroot\ExportSites\js\jquery.bxslider.min.js" />
+    <None Include="wwwroot\ExportSites\js\jquery.circle-progress.min.js" />
+    <None Include="wwwroot\ExportSites\js\jquery.circleType.js" />
+    <None Include="wwwroot\ExportSites\js\jquery.lettering.min.js" />
+    <None Include="wwwroot\ExportSites\js\jquery.magnific-popup.min.js" />
+    <None Include="wwwroot\ExportSites\js\jquery.validate.min.js" />
+    <None Include="wwwroot\ExportSites\js\nouislider.min.js" />
+    <None Include="wwwroot\ExportSites\js\odometer.min.js" />
+    <None Include="wwwroot\ExportSites\js\owl.carousel.min.js" />
+    <None Include="wwwroot\ExportSites\js\roofsie.js" />
+    <None Include="wwwroot\ExportSites\js\stacktable.js" />
+    <None Include="wwwroot\ExportSites\js\swiper.min.js" />
+    <None Include="wwwroot\ExportSites\js\timePicker.js" />
+    <None Include="wwwroot\ExportSites\js\tiny-slider.min.js" />
+    <None Include="wwwroot\ExportSites\js\vegas.min.js" />
+    <None Include="wwwroot\ExportSites\js\wNumb.min.js" />
+    <None Include="wwwroot\ExportSites\js\wow.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Paginas_creadas\" />
+    <Folder Include="wwwroot\ExportSites\img\" />
   </ItemGroup>
 
 </Project>
