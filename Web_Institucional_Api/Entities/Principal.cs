@@ -2,56 +2,55 @@
 {
     public class Principal
     {
-        public string crearPagina(int idPagina)
+        public static string crearPagina(int idPagina)
         {
             string html =
-                @"
-                <!doctype html>
-                    <html lang=""en"" style=""overflow-x:hidden;"">
-                ";
+                @"<!doctype html>
+                    <html lang=""en"" style=""overflow-x:hidden;"">";
             html += crearHead();
             html += crearBody();
             html += Entities.Componentes.Cards.getCards(idPagina, 10);
-            html += "</body></html>";
+            html += @"</body>
+                    </html>";
             return html;
         }
-        public string crearBody()
+        public static string crearBody()
         {
             string html =
-                @"
-                <body>
-                    <script src=""js/jquery-3.6.0.min.js""></script>
-                    <script src=""js/bootstrap.bundle.min.js""></script>
-                    <script src=""js/jarallax.min.js""></script>
-                    <script src=""js/jquery.ajaxchimp.min.js""></script>
-                    <script src=""js/jquery.appear.min.js""></script>
-                    <script src=""js/jquery.circle-progress.min.js""></script>
-                    <script src=""js/jquery.magnific-popup.min.js""></script>
-                    <script src=""js/jquery.validate.min.js""></script>
-                    <script src=""js/nouislider.min.js""></script>
-                    <script src=""js/odometer.min.js""></script>
-                    <script src=""js/swiper.min.js""></script>
-                    <script src=""js/tiny-slider.min.js""></script>
-                    <script src=""js/wNumb.min.js""></script>
-                    <script src=""js/wow.js""></script>
-                    <script src=""js/isotope.js""></script>
-                    <script src=""js/countdown.min.js""></script>
-                    <script src=""js/owl.carousel.min.js""></script>
-                    <script src=""js/jquery.bxslider.min.js""></script>
-                    <script src=""js/bootstrap-select.min.js""></script>
-                    <script src=""js/vegas.min.js""></script>
-                    <script src=""js/jquery-ui.js""></script>
-                    <script src=""js/timePicker.js""></script>
-                    <script src=""js/jquery.circleType.js""></script>
-                    <script src=""js/jquery.lettering.min.js""></script>
-                    <script src=""js/roofsie.js""></script>
-                    <script src=""https://cdnjs.cloudflare.com/ajax/libs/stacktable.js/1.0.3/stacktable.min.js""
-                        integrity=""sha512-cz2xHIVB1JdqImhx3csqiWDNvdjh1QeRBlXpO3dMkoPXqDA59axTzDsLl8SmUUetVoONwu6L/SXGiG5meJ3OJg==""
-                        crossorigin=""anonymous"" referrerpolicy=""no-referrer""></script>
-                 ";
+@"
+<body>
+    <script src=""js/jquery-3.6.0.min.js""></script>
+    <script src=""js/bootstrap.bundle.min.js""></script>
+    <script src=""js/jarallax.min.js""></script>
+    <script src=""js/jquery.ajaxchimp.min.js""></script>
+    <script src=""js/jquery.appear.min.js""></script>
+    <script src=""js/jquery.circle-progress.min.js""></script>
+    <script src=""js/jquery.magnific-popup.min.js""></script>
+    <script src=""js/jquery.validate.min.js""></script>
+    <script src=""js/nouislider.min.js""></script>
+    <script src=""js/odometer.min.js""></script>
+    <script src=""js/swiper.min.js""></script>
+    <script src=""js/tiny-slider.min.js""></script>
+    <script src=""js/wNumb.min.js""></script>
+    <script src=""js/wow.js""></script>
+    <script src=""js/isotope.js""></script>
+    <script src=""js/countdown.min.js""></script>
+    <script src=""js/owl.carousel.min.js""></script>
+    <script src=""js/jquery.bxslider.min.js""></script>
+    <script src=""js/bootstrap-select.min.js""></script>
+    <script src=""js/vegas.min.js""></script>
+    <script src=""js/jquery-ui.js""></script>
+    <script src=""js/timePicker.js""></script>
+    <script src=""js/jquery.circleType.js""></script>
+    <script src=""js/jquery.lettering.min.js""></script>
+    <script src=""js/roofsie.js""></script>
+    <script src=""https://cdnjs.cloudflare.com/ajax/libs/stacktable.js/1.0.3/stacktable.min.js""
+        integrity=""sha512-cz2xHIVB1JdqImhx3csqiWDNvdjh1QeRBlXpO3dMkoPXqDA59axTzDsLl8SmUUetVoONwu6L/SXGiG5meJ3OJg==""
+        crossorigin=""anonymous"" referrerpolicy=""no-referrer""></script>
+    ";
             return html;
         }
-        public string crearHead()
+        public static string crearHead()
         {
             string html =
             @"
@@ -561,12 +560,13 @@
                         text-overflow: ellipsis;
                     }
                 </style>
-                <script defer=""defer"" type=""module"" src=""/js/chunk-vendors.b7215bf1.js""></script>
-                <script defer=""defer"" type=""module"" src=""/js/app.eb298af3.js""></script>
-                <link href=""/css/chunk-vendors.506c8c2b.css"" rel=""stylesheet"">
-                <link href=""/css/app.b508f9be.css"" rel=""stylesheet"">
-                <script defer=""defer"" src=""/js/chunk-vendors-legacy.41bb6c99.js"" nomodule></script>
-                <script defer=""defer"" src=""/js/app-legacy.f3eb9095.js"" nomodule></script>
+                <script defer=""defer"" type=""module"" src=""js/chunk-vendors.b7215bf1.js""></script>
+                <script defer=""defer"" type=""module"" src=""js/app.eb298af3.js""></script>
+                <link href=""css/chunk-vendors.506c8c2b.css"" rel=""stylesheet"">
+                <link href=""css/app.b508f9be.css"" rel=""stylesheet"">
+                <link href=""css/Home.148d7ec8.css"" rel=""stylesheet"">
+                <script defer=""defer"" src=""js/chunk-vendors-legacy.41bb6c99.js"" nomodule></script>
+                <script defer=""defer"" src=""js/app-legacy.f3eb9095.js"" nomodule></script>
 
             </head>";
             return html;

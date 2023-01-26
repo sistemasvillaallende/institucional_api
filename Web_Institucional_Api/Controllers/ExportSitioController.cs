@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.IO.Compression;
+using System.Text;
 
 namespace Web_Institucional_Api.Controllers
 {
@@ -32,23 +33,36 @@ namespace Web_Institucional_Api.Controllers
                 folder = string.Format("Pagina_{0}", i + 1);
                 path = Path.Combine(contentRootPath, 
                     "wwwroot\\Assets\\Archivos_Pagina_Institucional\\");
+                path = Path.Combine(path, folder);
                 var dir = new DirectoryInfo(path);
                 DirectoryInfo[] dirs = dir.GetDirectories();
 
                 destinationDir = Path.Combine(contentRootPath,
                     "wwwroot\\ExportSites\\img\\");
+                destinationDir = Path.Combine(destinationDir, folder);
 
-                if (System.IO.File.Exists(destinationDir + folder))
-                    System.IO.File.Delete(destinationDir + folder);
+                if (System.IO.Directory.Exists(destinationDir))
+                    System.IO.Directory.Delete(destinationDir, true);
 
-                System.IO.Directory.CreateDirectory(destinationDir + folder);
+                System.IO.Directory.CreateDirectory(destinationDir);
 
                 foreach (FileInfo file in dir.GetFiles())
                 {
                     string targetFilePath = Path.Combine(destinationDir, file.Name);
-                    file.CopyTo(targetFilePath);
+                    file.CopyTo(targetFilePath,true);
                 }
-
+                // Create the file, or overwrite if the file exists.
+                destinationDir = Path.Combine(contentRootPath,
+                    "wwwroot\\ExportSites\\");
+                destinationDir = Path.Combine(destinationDir,
+                    "index.html");
+                using (FileStream fs = System.IO.File.Create(destinationDir))
+                {
+                    byte[] info = new UTF8Encoding(true).GetBytes(
+                        Entities.Principal.crearPagina(1));
+                    // Add some information to the file.
+                    fs.Write(info, 0, info.Length);
+                }
             }
             //string startPath = @".\start";
             //string zipPath = @".\result.zip";
