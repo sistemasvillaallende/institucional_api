@@ -16,7 +16,7 @@ namespace Web_Institucional_Api.Entities
         public string callToAction { get; set; }
         public string callToActionLink { get; set; }
         public string callToActionTarget { get; set; }
-
+        public int id_sitio { get; set; }
         public AccionesPrincipales()
         {
             id = 0;
@@ -26,6 +26,7 @@ namespace Web_Institucional_Api.Entities
             callToAction = string.Empty;
             callToActionLink = string.Empty;
             callToActionTarget = string.Empty;
+            id_sitio = 0;
         }
 
         private static List<AccionesPrincipales> mapeo(SqlDataReader dr)
@@ -44,6 +45,7 @@ namespace Web_Institucional_Api.Entities
                     if (!dr.IsDBNull(4)) { obj.callToAction = dr.GetString(4); }
                     if (!dr.IsDBNull(5)) { obj.callToActionLink = dr.GetString(5); }
                     if (!dr.IsDBNull(6)) { obj.callToActionTarget = dr.GetString(6); }
+                    if (!dr.IsDBNull(7)) { obj.id_sitio = dr.GetInt32(7); }
                     lst.Add(obj);
                 }
             }
@@ -71,7 +73,28 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
-
+        public static List<AccionesPrincipales> read(int idSitio)
+        {
+            try
+            {
+                List<AccionesPrincipales> lst = new List<AccionesPrincipales>();
+                using (SqlConnection con = getConnection())
+                {
+                    SqlCommand cmd = con.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "SELECT *FROM AccionesPrincipales WHERE id_sitio=@id_sitio";
+                    cmd.Parameters.AddWithValue("@id_sitio", idSitio);
+                    cmd.Connection.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    lst = mapeo(dr);
+                    return lst;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static AccionesPrincipales getByPk(
         int id)
         {
@@ -113,6 +136,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", callToAction");
                 sql.AppendLine(", callToActionLink");
                 sql.AppendLine(", callToActionTarget");
+                sql.AppendLine(", id_sitio");
                 sql.AppendLine(")");
                 sql.AppendLine("VALUES");
                 sql.AppendLine("(");
@@ -122,6 +146,7 @@ namespace Web_Institucional_Api.Entities
                 sql.AppendLine(", @callToAction");
                 sql.AppendLine(", @callToActionLink");
                 sql.AppendLine(", @callToActionTarget");
+                sql.AppendLine(", @id_sitio");
                 sql.AppendLine(")");
                 sql.AppendLine("SELECT SCOPE_IDENTITY()");
                 using (SqlConnection con = getConnection())
@@ -135,6 +160,7 @@ namespace Web_Institucional_Api.Entities
                     cmd.Parameters.AddWithValue("@callToAction", obj.callToAction);
                     cmd.Parameters.AddWithValue("@callToActionLink", obj.callToActionLink);
                     cmd.Parameters.AddWithValue("@callToActionTarget", obj.callToActionTarget);
+                    cmd.Parameters.AddWithValue("@id_sitio", obj.id_sitio);
                     cmd.Connection.Open();
                     return Convert.ToInt32(cmd.ExecuteScalar());
                 }

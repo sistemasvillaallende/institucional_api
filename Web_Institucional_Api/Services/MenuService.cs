@@ -75,11 +75,11 @@ namespace Web_Institucional_Api.Services
             }
         }
 
-        public List<Menu> read(int idPadre)
+        public List<Menu> read(int idPadre, int idSitio)
         {
             try
             {
-                return Entities.Menu.read(idPadre);
+                return Entities.Menu.read(idPadre, idSitio);
             }
             catch (Exception ex)
             {
@@ -87,11 +87,11 @@ namespace Web_Institucional_Api.Services
             }
         }
 
-        public List<Menu> readActivos(int idPadre)
+        public List<Menu> readActivos(int idPadre, int idSitio)
         {
             try
             {
-                return Entities.Menu.readActivos(idPadre);
+                return Entities.Menu.readActivos(idPadre, idSitio);
             }
             catch (Exception ex)
             {
