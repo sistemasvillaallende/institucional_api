@@ -407,7 +407,22 @@
                     .main-timeline .timeline:last-child:nth-child(even) {
                         margin: 0;
                     }
-
+                    @media (min-width: 1200px){
+                        #headerPC {
+                            display: block;
+                        }
+                        #headerMobile {
+                            display: none;
+                        }
+                    }
+                    @media (max-width: 1200px){
+                        #headerPC {
+                            display: none;
+                        }
+                        #headerMobile {
+                            display: block;
+                        }
+                    }
                     @media only screen and (max-width: 990px) {
                         .main-timeline:before {
                             left: 100%;

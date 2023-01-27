@@ -5,6 +5,8 @@
         public static string read(int idSitio)
         {
             Entities.Institucional objDatos = Entities.Institucional.getByPk(idSitio);
+            List<Entities.Menu> lstMenu = Entities.Menu.readActivos(0, idSitio);
+            string destino = string.Empty;
             string html =
         @"<div id=""headerPC"">
         <header class=""main-header-two clearfix"" style=""margin-top: 0px; height: 233px;"">
@@ -59,8 +61,8 @@
                         <div class=""main-header-two__shape-2"" style=""border-top: 96px solid var(--roofsie-white);""></div>
                         <div class=""main-header-two__shape-3""></div>
                         <div class=""main-header-two__shape-4"" style=""background-color: var(--roofsie-base);""></div>
-                        <div class=""main-header-two__shape-5""></div>
-                        <div class=""main-header-two__shape-6"" style=""border-bottom: 93px solid var(--roofsie-white);""></div>
+                        <div class=""main-header-two__shape-5"" style=""bottom: -70px;""></div>
+                        <div class=""main-header-two__shape-6"" style=""bottom: -70px; border-bottom: 93px solid var(--roofsie-white);""></div>
                         <div class=""main-header-two__shape-7""></div>
                         <div class=""main-header-two__logo"">
                             <a href=""index.html"">
@@ -81,12 +83,13 @@
                     <div class=""content"" style=""top: 0px !important;"">
                         <h5 style=""margin-top: 15px;"">
                             <a href=""{1}"" target=""{2}"">
-                                <span>Guia de <br> Tramites</span>
+                                <span>{3}</span>
                             </a>
                         </h5>
                     </div>
                 </li>
-                ", lstAcciones[i].icono, lstAcciones[i].callToActionLink, lstAcciones[i].callToActionTarget);
+                ", lstAcciones[i].icono, lstAcciones[i].callToActionLink, lstAcciones[i].callToActionTarget,
+                    lstAcciones[i].titulo);
             }
             html +=
             @"
@@ -95,24 +98,20 @@
                     </div>
                 </div>
             </div>
-            <nav class=""main-menu main-menu-two clearfix"" style=""height: 90px;"">
-                <div class=""main-menu-two__wrapper clearfix"" style=""height: 90px;"">
+            <nav class=""main-menu main-menu-two clearfix"" style=""height: 70px;"">
+                <div class=""main-menu-two__wrapper clearfix"" style=""height: 70px;"">
                     <div class=""container"" style=""padding-top: 0px;"">
                         <div class=""main-menu-two__wrapper-inner clearfix"" 
-                            style=""min-height: 90px; max-height: 90px; background-color: var(--roofsie-base);"">
+                            style=""min-height: 70px; max-height: 70px; background-color: var(--roofsie-base);"">
                             <div class=""main-menu-two__wrapper-inner-bg"" style=""background-color: var(--roofsie-base);""></div>
                             <div class=""main-menu-two__left""></div>
-                            <div class=""main-menu-two__right"" style=""height: 90px;"">
-                                <div class=""main-menu-two__main-menu-box"">
-                                    <a href=""#"" class=""mobile-nav__toggler"">
-                                        <i class=""fa fa-bars""></i>
-                                    </a>
-                                    <ul class=""main-menu__list one-page-scroll-menu"">";
+                            <div class=""main-menu-two__right"" style=""height: 70px;"">
+                                <div class=""main-menu-two__main-menu-box"" style=""width: 1200px;"">
+                                    <ul style=""float: right;"" class=""main-menu__list one-page-scroll-menu"">";
 
-            List<Entities.Menu> lstMenu = Entities.Menu.readActivos(0, idSitio);
+
             foreach (Entities.Menu menu in lstMenu)
             {
-                string destino = string.Empty;
                 if (menu.tipo == 1)
                 {
                     html += string.Format(
@@ -136,7 +135,7 @@
                     html += @"</ul>
                          </li>";
                 }
-                if (menu.tipo == 1)
+                if (menu.tipo == 0)
                 {
                     if (menu.destino == "interna")
                         destino = string.Format("Pagina_{0}.html", menu.id_page);
@@ -164,12 +163,12 @@
             ";
 
             html += string.Format(@"
-    <div id=""headerPC"">  
+    <div id=""headerMobile"">  
         <header class=""main-header-two clearfix"" style=""margin-top: 0px; height: 150px;"">
             <div class="""" style=""background-color: var(--roofsie-blanco); height: 103px;"">
                 <div class=""container"" style=""padding-top: 20px; padding-bottom: 0px; text-align: center; display: block;"">
                     <a href=""/"">
-                        <img src=""img/"" alt="""">
+                        <img src=""img/{0}"" alt="""">
                     </a>
                 </div>
             </div>
@@ -185,36 +184,39 @@
                 </div>
             </nav>
         </header>
-
-            ", );
-
-            /*
-
-        
-            
-                
-
-
-
-
-        <aside class=""v-navigation-drawer v-navigation-drawer--absolute v-navigation-drawer--is-mobile
-                v-navigation-drawer--open v-navigation-drawer--temporary theme--light""
-               data-booted=""true"" style=""height: 100vh; top: 0px; transform: translateX(0%);
-                width: 286px; z-index: 2000; position: fixed;"">
+        <aside class=""v-navigation-drawer v-navigation-drawer--absolute 
+            v-navigation-drawer--close v-navigation-drawer--is-mobile 
+            v-navigation-drawer--temporary theme--light"" data-booted=""true"" 
+            style=""height: 100vh; top: 0px; transform: translateX(0 %); width: 286px; z-index: 2000; 
+            position: fixed; "">
             <div class=""v-navigation-drawer__content"">
-                <div role=""list"" class=""v-list v-sheet theme--light"">
-                    <div class=""v-list-group"" style=""font-size: 16px !important;"">
-                        <div tabindex=""0"" aria-expanded=""false"" role=""button""
-                             class=""v-list-group__header v-list-item v-list-item--link theme--light"">
-                            <div class=""v-list-item__icon v-list-group__header__prepend-icon"">
-                                <i aria-hidden=""true"" class=""v-icon notranslate fa fa fa fa-chevron-down theme--light""></i>
-                            </div>
-                            <div class=""v-list-item__title"">Ciudad</div>
-                            <div class=""v-list-item__icon v-list-group__header__append-icon"">
-                                <i aria-hidden=""true"" class=""v-icon notranslate mdi mdi-chevron-down theme--light""></i>
-                            </div>
-                        </div>
-                        <div class=""v-list-group__items"" style=""display: none;"">
+                <div role=""list"" class=""v-list v-sheet theme--light"">", objDatos.logo);
+            foreach (Entities.Menu menu in lstMenu)
+            {
+                if (menu.tipo == 1)
+                {
+                    html += string.Format(
+                        @"
+                        <div class=""v-list-group"" style=""font-size: 16px !important;"">
+                            <div tabindex=""0"" aria-expanded=""false"" role=""button""
+                                 class=""v-list-group__header v-list-item v-list-item--link theme--light"">
+                                <div class=""v-list-item__icon v-list-group__header__prepend-icon"">
+                                    <i aria-hidden=""true"" class=""v-icon notranslate fa fa fa fa-chevron-down theme--light""></i>
+                                </div>
+                                <div class=""v-list-item__title"">{0}</div>
+                                <div class=""v-list-item__icon v-list-group__header__append-icon"">
+                                    <i aria-hidden=""true"" class=""v-icon notranslate mdi mdi-chevron-down theme--light""></i>
+                                </div>
+                            </div>", menu.texto);
+                    foreach (var item in menu.lstHijos)
+                    {
+                        if (item.destino == "interna")
+                            destino = string.Format("Pagina_{0}.html", item.id_page);
+                        else
+                            destino = item.url;
+
+                        html += string.Format(
+                        @"<div class=""v-list-group__items"" style=""display: none;"">
                             <div class=""v-list-group v-list-group--no-action v-list-group--sub-group"">
                                 <div tabindex=""0"" aria-expanded=""false"" role=""button""
                                      class=""v-list-group__header v-list-item v-list-item--link theme--light"">
@@ -223,33 +225,42 @@
                                     </div>
                                     <div class=""v-list-item__content"">
                                         <div class=""v-list-item__title"">
-                                            <a target="""" href=""/Page/4"">Historia</a>
+                                            <a target=""{0}"" href=""{1}"">{2}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <hr role=""separator"" aria-orientation=""horizontal"" class=""v-divider theme--light"">
-                    <div tabindex=""-1"" role=""listitem"" class=""v-list-item theme--light"">
-                        <div class=""v-list-item__icon"">
-                            <i aria-hidden=""true"" class=""v-icon notranslate fa fa-chevron-right material-icons theme--light""></i>
-                        </div>
-                        <div class=""v-list-item__content"">
-                            <div class=""v-list-item__title"">
-                                <a target=""_self"" href=""/#services"">Noticias</a>
+                        </div>", item._target, destino, item.texto);
+                    }
+                    html += "</div>";
+                }
+                if (menu.tipo == 0)
+                {
+                    html += string.Format(
+                        @"
+                        <div tabindex=""-1"" role=""listitem"" class=""v-list-item theme--light"">
+                            <div class=""v-list-item__icon"">
+                                <i aria-hidden=""true"" class=""v-icon notranslate fa fa-chevron-right material-icons theme--light""></i>
+                            </div>
+                            <div class=""v-list-item__content"">
+                                <div class=""v-list-item__title"">
+                                    <a target=""{0}"" href=""{1}"">{2}</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class=""v-navigation-drawer__border""></div>
-        </aside>
-    </div>
-             */
-
-
-            return html;
+                        ", menu._target, menu.url, menu.texto);
+                }
+                html += @"
+                            <hr role=""separator"" aria-orientation=""horizontal"" class=""v-divider theme--light"">
+                        </div>
+                        ";
+            }
+            html += @"
+                <div class=""v-navigation-drawer__border""></div>
+            </aside>
+        </div>
+                    ";
+                return html;
         }
     }
 }
