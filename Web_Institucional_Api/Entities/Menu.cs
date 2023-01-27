@@ -82,13 +82,13 @@ namespace Web_Institucional_Api.Entities
                     if (!dr.IsDBNull(8)) { obj.activo = dr.GetBoolean(8); }
                     if (!dr.IsDBNull(9)) { obj.destino = dr.GetString(9); }
                     if (!dr.IsDBNull(10)) { obj.id_page = dr.GetInt32(10); }
-                    obj.lstHijos = readActivos(obj.id);
+                    obj.lstHijos = readActivos(obj.id, obj.id_sitio);
                     lst.Add(obj);
                 }
             }
             return lst;
         }
-        public static List<Menu> read(int idPadre)
+        public static List<Menu> read(int idPadre, int idSitio)
         {
             try
             {
@@ -97,7 +97,8 @@ namespace Web_Institucional_Api.Entities
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM Menu WHERE id_padre=@id_padre ORDER BY orden";
+                    cmd.CommandText = "SELECT *FROM Menu WHERE id_padre=@id_padre AND id_sitio=@id_sitio ORDER BY orden";
+                    cmd.Parameters.AddWithValue("@id_sitio", idSitio);
                     cmd.Parameters.AddWithValue("@id_padre", idPadre);
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
@@ -110,7 +111,7 @@ namespace Web_Institucional_Api.Entities
                 throw ex;
             }
         }
-        public static List<Menu> readActivos(int idPadre)
+        public static List<Menu> readActivos(int idPadre, int idSitio)
         {
             try
             {
@@ -119,7 +120,8 @@ namespace Web_Institucional_Api.Entities
                 {
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT *FROM Menu WHERE activo=1 AND id_padre=@id_padre ORDER BY orden";
+                    cmd.CommandText = "SELECT *FROM Menu WHERE activo=1 AND id_padre=@id_padre AND id_sitio=@id_sitio ORDER BY orden";
+                    cmd.Parameters.AddWithValue("@id_sitio", idSitio);
                     cmd.Parameters.AddWithValue("@id_padre", idPadre);
                     cmd.Connection.Open();
                     SqlDataReader dr = cmd.ExecuteReader();

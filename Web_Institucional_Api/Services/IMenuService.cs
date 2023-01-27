@@ -4,8 +4,8 @@ namespace Web_Institucional_Api.Services
 {
     public interface IMenuService
     {
-        public List<Menu> read(int idPadre);
-        public List<Menu> readActivos(int idPadre);
+        public List<Menu> read(int idPadre, int idSitio);
+        public List<Menu> readActivos(int idPadre, int idSitio);
         public int getMaxOrden(int idPadre);
         public Menu getByPk(int id);
         public int insert(Menu obj);

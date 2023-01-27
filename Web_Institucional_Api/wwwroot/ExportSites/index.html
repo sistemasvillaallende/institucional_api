@@ -8,6 +8,9 @@
                     type="image/vnd.microsoft.icon">
                 <link rel="preconnect" href="https://fonts.googleapis.com/">
                 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+                <link href="css/chunk-vendors.506c8c2b.css" rel="stylesheet">
+                <link href="css/app.b508f9be.css" rel="stylesheet">
+                <link href="css/Home.148d7ec8.css" rel="stylesheet">
                 <link href="css/css2.css" rel="stylesheet">
                 <link rel="stylesheet" href="css/bootstrap.min.css">
                 <link rel="stylesheet" href="css/animate.min.css">
@@ -50,19 +53,20 @@
                     }
 
                     :root {
---roofsie-font: 'Manrope', sans-serif;
-    --roofsie-reey-font: "reeyregular";
-    --roofsie-gray: #6c6b6f;
-    --roofsie-gray-rgb: 108, 107, 111;
-    --roofsie-white: #ffffff;
-    --roofsie-white-rgb: 255, 255, 255;
-    --roofsie-base: #ff4f47;
-    --roofsie-base-rgb: 255, 79, 71;
-    --roofsie-black: #1c1b1f;
-    --roofsie-black-rgb: 28, 27, 31;
-    --roofsie-primary: #f4f1ee;
-    --roofsie-primary-rgb: 244, 241, 238;
-    --roofsie-bdr-radius: 5px;
+                        --roofsie-font: 'Manrope', sans-serif;
+                        --roofsie-reey-font: "reeyregular";
+                        --roofsie-gray: #6F6F6E;
+                        --roofsie-gray-rgb: 111, 111, 110;
+                        --roofsie-white: #FFD300;
+                        --roofsie-white-rgb: 255, 211, 0;
+                        --roofsie-base: #F3F0ED;
+                        --roofsie-base-rgb: 243, 240, 237;
+                        --roofsie-black: #1c1b1f;
+                        --roofsie-black-rgb: 28, 27, 31;
+                        --roofsie-primary: #C6C6C5;
+                        --roofsie-primary-rgb: 198, 198, 197;
+                        --roofsie-bdr-radius: 5px;
+                        --roofsie-blanco: white;
                     }
 
                     .main-timeline {
@@ -348,7 +352,22 @@
                     .main-timeline .timeline:last-child:nth-child(even) {
                         margin: 0;
                     }
-
+                    @media (min-width: 1200px){
+                        #headerPC {
+                            display: block;
+                        }
+                        #headerMobile {
+                            display: none;
+                        }
+                    }
+                    @media (max-width: 1200px){
+                        #headerPC {
+                            display: none;
+                        }
+                        #headerMobile {
+                            display: block;
+                        }
+                    }
                     @media only screen and (max-width: 990px) {
                         .main-timeline:before {
                             left: 100%;
@@ -507,9 +526,6 @@
                 </style>
                 <script defer="defer" type="module" src="js/chunk-vendors.b7215bf1.js"></script>
                 <script defer="defer" type="module" src="js/app.eb298af3.js"></script>
-                <link href="css/chunk-vendors.506c8c2b.css" rel="stylesheet">
-                <link href="css/app.b508f9be.css" rel="stylesheet">
-                <link href="css/Home.148d7ec8.css" rel="stylesheet">
                 <script defer="defer" src="js/chunk-vendors-legacy.41bb6c99.js" nomodule></script>
                 <script defer="defer" src="js/app-legacy.f3eb9095.js" nomodule></script>
 
@@ -543,7 +559,309 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stacktable.js/1.0.3/stacktable.min.js"
         integrity="sha512-cz2xHIVB1JdqImhx3csqiWDNvdjh1QeRBlXpO3dMkoPXqDA59axTzDsLl8SmUUetVoONwu6L/SXGiG5meJ3OJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <section style="margin-top:50px; margin-bottom:50px;">
+    <div id="headerPC">
+        <header class="main-header-two clearfix" style="margin-top: 0px; height: 233px;">
+            <div class="main-header-two__top" style="background-color: transparent; height: 40px;">
+                <div class="container" style="padding-top: 0px;">
+                    <div class="main-header-two__top-inner">
+                        <div class="main-header-two__top-left">
+                            <p class="main-header-two__top-left-text"></p>
+                        </div>
+                        <div class="main-header-two__top-right">
+                            <div class="main-header-two__top-social"><a href="https://www.facebook.com/municipalidadvillaallende" style="margin-right: 10px;">
+                    <i class="fab fa-facebook-square" style="font-size: 28px;"></i>
+                  </a><a href="https://www.instagram.com/munivillaallende/" style="margin-right: 10px;">
+                    <i class="fab fa-instagram" style="font-size: 28px;"></i>
+                  </a><a href="https://www.youtube.com/@municipalidaddevillaallend6055" style="margin-right: 10px;">
+                    <i class="fab fa-youtube" style="font-size: 28px;"></i>
+                  </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-header-two__middle"
+                style="background-color: var(--roofsie-blanco); height: 103px;">
+                <div class="container" style="padding-top: 0px; padding-bottom: 0px;">
+                    <div class="main-header-two__middle-inner clearfix">
+                        <div class="main-header-two__shape-1" style="border-top: 144px solid rgb(15, 153, 202);"></div>
+                        <div class="main-header-two__shape-2" style="border-top: 96px solid var(--roofsie-white);"></div>
+                        <div class="main-header-two__shape-3"></div>
+                        <div class="main-header-two__shape-4" style="background-color: var(--roofsie-base);"></div>
+                        <div class="main-header-two__shape-5" style="bottom: -70px;"></div>
+                        <div class="main-header-two__shape-6" style="bottom: -70px; border-bottom: 93px solid var(--roofsie-white);"></div>
+                        <div class="main-header-two__shape-7"></div>
+                        <div class="main-header-two__logo">
+                            <a href="index.html">
+                                <img src="img/Logo.png" alt="">
+                            </a>
+                        </div>
+                        <div class="main-header-two__address">
+                            <ul class="list-unstyled main-header-two__address-list">
+                <li>
+                    <div class="icon" style="top: 14px;">
+                        <span class="icon-tramite" style="font-size: 36px; color: var(--roofsie-white);"></span>
+                    </div>
+                    <div class="content" style="top: 0px !important;">
+                        <h5 style="margin-top: 15px;">
+                            <a href="https://vecino.villaallende.gov.ar/guia_tramites" target="_blank">
+                                <span>Guia de <br/> Tramites</span>
+                            </a>
+                        </h5>
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="icon" style="top: 14px;">
+                        <span class="fa fa-wifi" style="font-size: 36px; color: var(--roofsie-white);"></span>
+                    </div>
+                    <div class="content" style="top: 0px !important;">
+                        <h5 style="margin-top: 15px;">
+                            <a href="https://vecino.villaallende.gov.ar/index.aspx" target="_blank">
+                                <span>Vecino <br/> Digital</span>
+                            </a>
+                        </h5>
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="icon" style="top: 14px;">
+                        <span class="fa fa-comments" style="font-size: 36px; color: var(--roofsie-white);"></span>
+                    </div>
+                    <div class="content" style="top: 0px !important;">
+                        <h5 style="margin-top: 15px;">
+                            <a href="https://www.mr-bubo.com/VAM/(S(wbusjzwvaqfje1hobgt1gonc))/mobi/default.aspx" target="_blank">
+                                <span>Reclamos</span>
+                            </a>
+                        </h5>
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="icon" style="top: 14px;">
+                        <span class="fa fa-dollar" style="font-size: 36px; color: var(--roofsie-white);"></span>
+                    </div>
+                    <div class="content" style="top: 0px !important;">
+                        <h5 style="margin-top: 15px;">
+                            <a href="https://vecino.villaallende.gov.ar/Cedulones/index.aspx" target="_blank">
+                                <span>Ver y <br/>pagar  deuda</span>
+                            </a>
+                        </h5>
+                    </div>
+                </li>
+                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-menu main-menu-two clearfix" style="height: 70px;">
+                <div class="main-menu-two__wrapper clearfix" style="height: 70px;">
+                    <div class="container" style="padding-top: 0px;">
+                        <div class="main-menu-two__wrapper-inner clearfix" 
+                            style="min-height: 70px; max-height: 70px; background-color: var(--roofsie-base);">
+                            <div class="main-menu-two__wrapper-inner-bg" style="background-color: var(--roofsie-base);"></div>
+                            <div class="main-menu-two__left"></div>
+                            <div class="main-menu-two__right" style="height: 70px;">
+                                <div class="main-menu-two__main-menu-box" style="width: 1200px;">
+                                    <ul style="float: right;" class="main-menu__list one-page-scroll-menu"><li class="dropdown">
+                            <a href="#">Ciudad</a>
+                            <ul class="border-top-2px">
+                        <li>
+                            <a href="Page_/Page/4.html" target="_self">Historia </a>
+                          </li>
+                        </ul>
+                         </li><li class="dropdown">
+                            <a href="#">Gobierno</a>
+                            <ul class="border-top-2px">
+                        <li>
+                            <a href="Page_/Page/25.html" target="_self">Autoridades </a>
+                          </li>
+                        <li>
+                            <a href="Page_/Page/27.html" target="_self">Plan de Gobierno 2023</a>
+                          </li>
+                        <li>
+                            <a href="Page_http://cd.villaallende.gov.ar/informacion-legislativa-ordenanzas.php.html" target="_blank">Ordenanzas </a>
+                          </li>
+                        <li>
+                            <a href="Page_/Page/2.html" target="_self">Boletín Oficial </a>
+                          </li>
+                        <li>
+                            <a href="Page_/Page/26.html" target="_self">Licitaciones </a>
+                          </li>
+                        </ul>
+                         </li><li class="scrollToLink">
+                            <a href="/#services" target="_self">Noticias</a>
+                          </li>
+                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>  
+        </div>
+            
+    <div id="headerMobile">  
+        <header class="main-header-two clearfix" style="margin-top: 0px; height: 150px;">
+            <div class="" style="background-color: var(--roofsie-blanco); height: 103px;">
+                <div class="container" style="padding-top: 20px; padding-bottom: 0px; text-align: center; display: block;">
+                    <a href="/">
+                        <img src="img/Logo.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <nav class="main-menu main-menu-two clearfix" style="margin-top: -130px;">
+                <div class="main-menu-two__wrapper clearfix" style="">
+                    <div class="main-menu-two__right" style="margin-right: 20px;">
+                        <div class="main-menu-two__main-menu-box" style="">
+                            <a href="#" class="mobile-nav__toggler">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <aside class="v-navigation-drawer v-navigation-drawer--absolute 
+            v-navigation-drawer--close v-navigation-drawer--is-mobile 
+            v-navigation-drawer--temporary theme--light" data-booted="true" 
+            style="height: 100vh; top: 0px; transform: translateX(0 %); width: 286px; z-index: 2000; 
+            position: fixed; ">
+            <div class="v-navigation-drawer__content">
+                <div role="list" class="v-list v-sheet theme--light">
+                        <div class="v-list-group" style="font-size: 16px !important;">
+                            <div tabindex="0" aria-expanded="false" role="button"
+                                 class="v-list-group__header v-list-item v-list-item--link theme--light">
+                                <div class="v-list-item__icon v-list-group__header__prepend-icon">
+                                    <i aria-hidden="true" class="v-icon notranslate fa fa fa fa-chevron-down theme--light"></i>
+                                </div>
+                                <div class="v-list-item__title">Ciudad</div>
+                                <div class="v-list-item__icon v-list-group__header__append-icon">
+                                    <i aria-hidden="true" class="v-icon notranslate mdi mdi-chevron-down theme--light"></i>
+                                </div>
+                            </div><div class="v-list-group__items" style="display: none;">
+                            <div class="v-list-group v-list-group--no-action v-list-group--sub-group">
+                                <div tabindex="0" aria-expanded="false" role="button"
+                                     class="v-list-group__header v-list-item v-list-item--link theme--light">
+                                    <div class="v-list-item__icon v-list-group__header__prepend-icon">
+                                        <i aria-hidden="true" class="v-icon notranslate mdi mdi-menu-down theme--light"></i>
+                                    </div>
+                                    <div class="v-list-item__content">
+                                        <div class="v-list-item__title">
+                                            <a target="_self" href="/Page/4">Historia </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></div>
+                            <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
+                        </div>
+                        
+                        <div class="v-list-group" style="font-size: 16px !important;">
+                            <div tabindex="0" aria-expanded="false" role="button"
+                                 class="v-list-group__header v-list-item v-list-item--link theme--light">
+                                <div class="v-list-item__icon v-list-group__header__prepend-icon">
+                                    <i aria-hidden="true" class="v-icon notranslate fa fa fa fa-chevron-down theme--light"></i>
+                                </div>
+                                <div class="v-list-item__title">Gobierno</div>
+                                <div class="v-list-item__icon v-list-group__header__append-icon">
+                                    <i aria-hidden="true" class="v-icon notranslate mdi mdi-chevron-down theme--light"></i>
+                                </div>
+                            </div><div class="v-list-group__items" style="display: none;">
+                            <div class="v-list-group v-list-group--no-action v-list-group--sub-group">
+                                <div tabindex="0" aria-expanded="false" role="button"
+                                     class="v-list-group__header v-list-item v-list-item--link theme--light">
+                                    <div class="v-list-item__icon v-list-group__header__prepend-icon">
+                                        <i aria-hidden="true" class="v-icon notranslate mdi mdi-menu-down theme--light"></i>
+                                    </div>
+                                    <div class="v-list-item__content">
+                                        <div class="v-list-item__title">
+                                            <a target="_self" href="/Page/25">Autoridades </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="v-list-group__items" style="display: none;">
+                            <div class="v-list-group v-list-group--no-action v-list-group--sub-group">
+                                <div tabindex="0" aria-expanded="false" role="button"
+                                     class="v-list-group__header v-list-item v-list-item--link theme--light">
+                                    <div class="v-list-item__icon v-list-group__header__prepend-icon">
+                                        <i aria-hidden="true" class="v-icon notranslate mdi mdi-menu-down theme--light"></i>
+                                    </div>
+                                    <div class="v-list-item__content">
+                                        <div class="v-list-item__title">
+                                            <a target="_self" href="/Page/27">Plan de Gobierno 2023</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="v-list-group__items" style="display: none;">
+                            <div class="v-list-group v-list-group--no-action v-list-group--sub-group">
+                                <div tabindex="0" aria-expanded="false" role="button"
+                                     class="v-list-group__header v-list-item v-list-item--link theme--light">
+                                    <div class="v-list-item__icon v-list-group__header__prepend-icon">
+                                        <i aria-hidden="true" class="v-icon notranslate mdi mdi-menu-down theme--light"></i>
+                                    </div>
+                                    <div class="v-list-item__content">
+                                        <div class="v-list-item__title">
+                                            <a target="_blank" href="http://cd.villaallende.gov.ar/informacion-legislativa-ordenanzas.php">Ordenanzas </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="v-list-group__items" style="display: none;">
+                            <div class="v-list-group v-list-group--no-action v-list-group--sub-group">
+                                <div tabindex="0" aria-expanded="false" role="button"
+                                     class="v-list-group__header v-list-item v-list-item--link theme--light">
+                                    <div class="v-list-item__icon v-list-group__header__prepend-icon">
+                                        <i aria-hidden="true" class="v-icon notranslate mdi mdi-menu-down theme--light"></i>
+                                    </div>
+                                    <div class="v-list-item__content">
+                                        <div class="v-list-item__title">
+                                            <a target="_self" href="/Page/2">Boletín Oficial </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="v-list-group__items" style="display: none;">
+                            <div class="v-list-group v-list-group--no-action v-list-group--sub-group">
+                                <div tabindex="0" aria-expanded="false" role="button"
+                                     class="v-list-group__header v-list-item v-list-item--link theme--light">
+                                    <div class="v-list-item__icon v-list-group__header__prepend-icon">
+                                        <i aria-hidden="true" class="v-icon notranslate mdi mdi-menu-down theme--light"></i>
+                                    </div>
+                                    <div class="v-list-item__content">
+                                        <div class="v-list-item__title">
+                                            <a target="_self" href="/Page/26">Licitaciones </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></div>
+                            <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
+                        </div>
+                        
+                        <div tabindex="-1" role="listitem" class="v-list-item theme--light">
+                            <div class="v-list-item__icon">
+                                <i aria-hidden="true" class="v-icon notranslate fa fa-chevron-right material-icons theme--light"></i>
+                            </div>
+                            <div class="v-list-item__content">
+                                <div class="v-list-item__title">
+                                    <a target="_self" href="/#services">Noticias</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                            <hr role="separator" aria-orientation="horizontal" class="v-divider theme--light">
+                        </div>
+                        
+                <div class="v-navigation-drawer__border"></div>
+            </aside>
+        </div>
+                    <section style="margin-top:50px; margin-bottom:50px;">
                         <div class="container">
                         <div class="row">
                             <div class="col">

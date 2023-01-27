@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+NwBFcraxV/FX0RCUBjjiOwDs3Djl05I8XkHpV2mNwE=",
+  "Hash": "oL3uk12CJfz5WZ25nu9yzhga4ELGkSAsno+3AW9klvQ=",
   "Source": "Web_Institucional_Api",
   "BasePath": "_content/Web_Institucional_Api",
   "Mode": "Default",
@@ -2465,6 +2465,23 @@
       "OriginalItemSpec": "wwwroot\\ExportSites\\css\\Home.148d7ec8.css"
     },
     {
+      "Identity": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\ExportSites\\css\\Home.148d7ec8.css.bak",
+      "SourceId": "Web_Institucional_Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\",
+      "BasePath": "_content/Web_Institucional_Api",
+      "RelativePath": "ExportSites/css/Home.148d7ec8.css.bak",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ExportSites\\css\\Home.148d7ec8.css.bak"
+    },
+    {
       "Identity": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\ExportSites\\css\\icon-moon.css",
       "SourceId": "Web_Institucional_Api",
       "SourceType": "Discovered",
@@ -2652,6 +2669,23 @@
       "OriginalItemSpec": "wwwroot\\ExportSites\\css\\roofsie.css"
     },
     {
+      "Identity": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\ExportSites\\css\\roofsie.css.bak",
+      "SourceId": "Web_Institucional_Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\",
+      "BasePath": "_content/Web_Institucional_Api",
+      "RelativePath": "ExportSites/css/roofsie.css.bak",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ExportSites\\css\\roofsie.css.bak"
+    },
+    {
       "Identity": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\ExportSites\\css\\roofsie-responsive.css",
       "SourceId": "Web_Institucional_Api",
       "SourceType": "Discovered",
@@ -2803,6 +2837,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\ExportSites\\css\\vegas.min.css"
+    },
+    {
+      "Identity": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\ExportSites\\img\\Logo.png",
+      "SourceId": "Web_Institucional_Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\",
+      "BasePath": "_content/Web_Institucional_Api",
+      "RelativePath": "ExportSites/img/Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ExportSites\\img\\Logo.png"
     },
     {
       "Identity": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\ExportSites\\img\\Pagina_1\\Archivo_1_News_6.png",
@@ -3568,6 +3619,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\ExportSites\\index.html"
+    },
+    {
+      "Identity": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\ExportSites\\index.html.bak",
+      "SourceId": "Web_Institucional_Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\",
+      "BasePath": "_content/Web_Institucional_Api",
+      "RelativePath": "ExportSites/index.html.bak",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ExportSites\\index.html.bak"
     },
     {
       "Identity": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\wwwroot\\ExportSites\\js\\app.eb298af3.js",

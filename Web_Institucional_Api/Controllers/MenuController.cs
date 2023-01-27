@@ -13,17 +13,17 @@ namespace Web_Institucional_Api.Controllers
             _menuService = menuService;
         }
         [HttpGet]
-        public IActionResult read(int idPadre)
+        public IActionResult read(int idPadre, int idSitio)
         {
             var lst =
-                _menuService.read(idPadre);
+                _menuService.read(idPadre, idSitio);
             return Ok(lst);
         }
         [HttpGet]
-        public IActionResult readActivos(int idPadre)
+        public IActionResult readActivos(int idPadre, int idSitio)
         {
             var lst =
-                _menuService.readActivos(idPadre);
+                _menuService.readActivos(idPadre, idSitio);
             return Ok(lst);
         }
         [HttpPost]
@@ -31,7 +31,7 @@ namespace Web_Institucional_Api.Controllers
         {
             int id = _menuService.insert(obj);
             var lst =
-                _menuService.read(obj.id_padre);
+                _menuService.read(obj.id_padre, obj.id_sitio);
             return Ok(lst);
         }
         [HttpPost]
@@ -39,7 +39,7 @@ namespace Web_Institucional_Api.Controllers
         {
             _menuService.activaDesactiva(obj.id, obj.activo);
             var lst =
-                _menuService.read(obj.id_padre);
+                _menuService.read(obj.id_padre, obj.id_sitio);
             return Ok(lst);
         }
         [HttpPost]
@@ -47,7 +47,7 @@ namespace Web_Institucional_Api.Controllers
         {
             _menuService.updateOrden(lstM);
             var lst =
-                _menuService.read(lstM[0].id_padre);
+                _menuService.read(lstM[0].id_padre, lstM[0].id_sitio);
             return Ok(lst);
         }
         [HttpPost]
@@ -55,7 +55,7 @@ namespace Web_Institucional_Api.Controllers
         {
             _menuService.update(obj);
             var lst =
-                _menuService.read(obj.id_padre);
+                _menuService.read(obj.id_padre, obj.id_sitio);
             return Ok(lst);
         }
         [HttpPost]
@@ -63,7 +63,7 @@ namespace Web_Institucional_Api.Controllers
         {
             _menuService.delete(obj.id);
             var lst =
-                _menuService.read(obj.id_padre);
+                _menuService.read(obj.id_padre, obj.id_sitio);
             return Ok(lst);
         }
     }

@@ -9,6 +9,7 @@
                     <html lang=""en"" style=""overflow-x:hidden;"">";
             html += crearHead();
             html += crearBody();
+            html += Entities.Componentes.Header1.read(1);
             html += Entities.Componentes.Cards.getCards(idPagina, 10);
             html += @"</body>
                     </html>";
@@ -62,6 +63,9 @@
                     type=""image/vnd.microsoft.icon"">
                 <link rel=""preconnect"" href=""https://fonts.googleapis.com/"">
                 <link rel=""preconnect"" href=""https://fonts.gstatic.com/"" crossorigin="""">
+                <link href=""css/chunk-vendors.506c8c2b.css"" rel=""stylesheet"">
+                <link href=""css/app.b508f9be.css"" rel=""stylesheet"">
+                <link href=""css/Home.148d7ec8.css"" rel=""stylesheet"">
                 <link href=""css/css2.css"" rel=""stylesheet"">
                 <link rel=""stylesheet"" href=""css/bootstrap.min.css"">
                 <link rel=""stylesheet"" href=""css/animate.min.css"">
@@ -403,7 +407,22 @@
                     .main-timeline .timeline:last-child:nth-child(even) {
                         margin: 0;
                     }
-
+                    @media (min-width: 1200px){
+                        #headerPC {
+                            display: block;
+                        }
+                        #headerMobile {
+                            display: none;
+                        }
+                    }
+                    @media (max-width: 1200px){
+                        #headerPC {
+                            display: none;
+                        }
+                        #headerMobile {
+                            display: block;
+                        }
+                    }
                     @media only screen and (max-width: 990px) {
                         .main-timeline:before {
                             left: 100%;
@@ -562,9 +581,6 @@
                 </style>
                 <script defer=""defer"" type=""module"" src=""js/chunk-vendors.b7215bf1.js""></script>
                 <script defer=""defer"" type=""module"" src=""js/app.eb298af3.js""></script>
-                <link href=""css/chunk-vendors.506c8c2b.css"" rel=""stylesheet"">
-                <link href=""css/app.b508f9be.css"" rel=""stylesheet"">
-                <link href=""css/Home.148d7ec8.css"" rel=""stylesheet"">
                 <script defer=""defer"" src=""js/chunk-vendors-legacy.41bb6c99.js"" nomodule></script>
                 <script defer=""defer"" src=""js/app-legacy.f3eb9095.js"" nomodule></script>
 
