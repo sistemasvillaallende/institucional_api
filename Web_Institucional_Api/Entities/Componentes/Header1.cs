@@ -8,10 +8,9 @@
             List<Entities.Menu> lstMenu = Entities.Menu.readActivos(0, idSitio);
             string destino = string.Empty;
             string html =
-        @"<div id=""headerPC"">
-        <header class=""main-header-two clearfix"" style=""margin-top: 0px; height: 233px;"">
-            <div class=""main-header-two__top"" style=""background-color: transparent; height: 40px;"">
-                <div class=""container"" style=""padding-top: 0px;"">
+        @"<header class=""main-header-two clearfix"">
+            <div class=""main-header-two__top"">
+                <div class=""container"">
                     <div class=""main-header-two__top-inner"">
                         <div class=""main-header-two__top-left"">
                             <p class=""main-header-two__top-left-text""></p>
@@ -21,15 +20,15 @@
             if (objDatos.facebook != string.Empty)
             {
                 html += string.Format(
-                @"<a href=""{0}"" style=""margin-right: 10px;"">
-                    <i class=""fab fa-facebook-square"" style=""font-size: 28px;""></i>
+                @"<a href=""{0}"">
+                    <i class=""fab fa-facebook-square""></i>
                   </a>", objDatos.facebook);
             }
             if (objDatos.instagram != string.Empty)
             {
                 html += string.Format(
-                @"<a href=""{0}"" style=""margin-right: 10px;"">
-                    <i class=""fab fa-instagram"" style=""font-size: 28px;""></i>
+                @"<a href=""{0}"">
+                    <i class=""fab fa-instagram""></i>
                   </a>", objDatos.instagram);
             }
             if (objDatos.youtube != string.Empty)
@@ -53,16 +52,15 @@
                     </div>
                 </div>
             </div>
-            <div class=""main-header-two__middle""
-                style=""background-color: var(--roofsie-blanco); height: 103px;"">
-                <div class=""container"" style=""padding-top: 0px; padding-bottom: 0px;"">
+            <div class=""main-header-two__middle"">
+                <div class=""container"">
                     <div class=""main-header-two__middle-inner clearfix"">
-                        <div class=""main-header-two__shape-1"" style=""border-top: 144px solid rgb(15, 153, 202);""></div>
-                        <div class=""main-header-two__shape-2"" style=""border-top: 96px solid var(--roofsie-white);""></div>
+                        <div class=""main-header-two__shape-1""></div>
+                        <div class=""main-header-two__shape-2""></div>
                         <div class=""main-header-two__shape-3""></div>
-                        <div class=""main-header-two__shape-4"" style=""background-color: var(--roofsie-base);""></div>
-                        <div class=""main-header-two__shape-5"" style=""bottom: -70px;""></div>
-                        <div class=""main-header-two__shape-6"" style=""bottom: -70px; border-bottom: 93px solid var(--roofsie-white);""></div>
+                        <div class=""main-header-two__shape-4""></div>
+                        <div class=""main-header-two__shape-5""></div>
+                        <div class=""main-header-two__shape-6""></div>
                         <div class=""main-header-two__shape-7""></div>
                         <div class=""main-header-two__logo"">
                             <a href=""index.html"">
@@ -72,13 +70,13 @@
                         <div class=""main-header-two__address"">
                             <ul class=""list-unstyled main-header-two__address-list"">", objDatos.logo);
             List<Entities.AccionesPrincipales> lstAcciones = Entities.AccionesPrincipales.read(idSitio);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 html += string.Format(
         @"
                 <li>
-                    <div class=""icon"" style=""top: 14px;"">
-                        <span class=""{0}"" style=""font-size: 36px; color: var(--roofsie-white);""></span>
+                    <div class=""icon"">
+                        <span class=""{0}"" style=""font-size: 36px;""></span>
                     </div>
                     <div class=""content"" style=""top: 0px !important;"">
                         <h5 style=""margin-top: 15px;"">
@@ -98,18 +96,18 @@
                     </div>
                 </div>
             </div>
-            <nav class=""main-menu main-menu-two clearfix"" style=""height: 70px;"">
-                <div class=""main-menu-two__wrapper clearfix"" style=""height: 70px;"">
-                    <div class=""container"" style=""padding-top: 0px;"">
-                        <div class=""main-menu-two__wrapper-inner clearfix"" 
-                            style=""min-height: 70px; max-height: 70px; background-color: var(--roofsie-base);"">
-                            <div class=""main-menu-two__wrapper-inner-bg"" style=""background-color: var(--roofsie-base);""></div>
+            <nav class=""main-menu main-menu-two clearfix"">
+                <div class=""main-menu-two__wrapper clearfix"">
+                    <div class=""container"">
+                        <div class=""main-menu-two__wrapper-inner clearfix"">
+                            <div class=""main-menu-two__wrapper-inner-bg""></div>
                             <div class=""main-menu-two__left""></div>
-                            <div class=""main-menu-two__right"" style=""height: 70px;"">
-                                <div class=""main-menu-two__main-menu-box"" style=""width: 1200px;"">
-                                    <ul style=""float: right;"" class=""main-menu__list one-page-scroll-menu"">";
-
-
+                            <div class=""main-menu-two__right"">
+                                <div class=""main-menu-two__main-menu-box"">
+                                    <a href=""#"" class=""mobile-nav__toggler"">
+                                        <i class=""fa fa-bars""></i>
+                                    </a>
+                                    <ul class=""main-menu__list one-page-scroll-menu"">";
             foreach (Entities.Menu menu in lstMenu)
             {
                 if (menu.tipo == 1)
@@ -130,7 +128,7 @@
                         @"<li>
                             <a href=""Page_{0}.html"" target=""{1}"">{2}</a>
                           </li>
-                        ",destino, item._target, item.texto);
+                        ", destino, item._target, item.texto);
                     }
                     html += @"</ul>
                          </li>";
@@ -150,7 +148,7 @@
                 }
             }
             html +=
-            @"
+            string.Format(@"
                                     </ul>
                                 </div>
                             </div>
@@ -158,56 +156,26 @@
                     </div>
                 </div>
             </nav>
-        </header>  
-        </div>
-            ";
-
-            html += string.Format(@"
-    <div id=""headerMobile"">  
-        <header class=""main-header-two clearfix"" style=""margin-top: 0px; height: 150px;"">
-            <div class="""" style=""background-color: var(--roofsie-blanco); height: 103px;"">
-                <div class=""container"" style=""padding-top: 20px; padding-bottom: 0px; text-align: center; display: block;"">
-                    <a href=""/"">
-                        <img src=""img/{0}"" alt="""">
-                    </a>
-                </div>
-            </div>
-            <nav class=""main-menu main-menu-two clearfix"" style=""margin-top: -130px;"">
-                <div class=""main-menu-two__wrapper clearfix"" style="""">
-                    <div class=""main-menu-two__right"" style=""margin-right: 20px;"">
-                        <div class=""main-menu-two__main-menu-box"" style="""">
-                            <a href=""#"" class=""mobile-nav__toggler"">
-                                <i class=""fa fa-bars""></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
         </header>
-        <aside class=""v-navigation-drawer v-navigation-drawer--absolute 
-            v-navigation-drawer--close v-navigation-drawer--is-mobile 
-            v-navigation-drawer--temporary theme--light"" data-booted=""true"" 
-            style=""height: 100vh; top: 0px; transform: translateX(0 %); width: 286px; z-index: 2000; 
-            position: fixed; "">
-            <div class=""v-navigation-drawer__content"">
-                <div role=""list"" class=""v-list v-sheet theme--light"">", objDatos.logo);
+        <div class=""mobile-nav__wrapper"">
+            <div class=""mobile-nav__overlay mobile-nav__toggler""></div>
+            <div class=""mobile-nav__content"">
+                <span class=""mobile-nav__close mobile-nav__toggler""><i class=""fa fa-times""></i></span>
+                <div class=""logo-box"">
+                    <a href=""index.html"" aria-label=""logo image"">
+					    <img src=""img/{0}"" width=""143"" alt="""">
+				    </a>
+                </div>
+                <div class=""mobile-nav__container"">", objDatos.logo);
             foreach (Entities.Menu menu in lstMenu)
             {
                 if (menu.tipo == 1)
                 {
                     html += string.Format(
-                        @"
-                        <div class=""v-list-group"" style=""font-size: 16px !important;"">
-                            <div tabindex=""0"" aria-expanded=""false"" role=""button""
-                                 class=""v-list-group__header v-list-item v-list-item--link theme--light"">
-                                <div class=""v-list-item__icon v-list-group__header__prepend-icon"">
-                                    <i aria-hidden=""true"" class=""v-icon notranslate fa fa fa fa-chevron-down theme--light""></i>
-                                </div>
-                                <div class=""v-list-item__title"">{0}</div>
-                                <div class=""v-list-item__icon v-list-group__header__append-icon"">
-                                    <i aria-hidden=""true"" class=""v-icon notranslate mdi mdi-chevron-down theme--light""></i>
-                                </div>
-                            </div>", menu.texto);
+                        @"<li class=""dropdown"">
+                            <a href=""#"">{0}</a>
+                            <ul class=""border-top-2px"">
+                        ", menu.texto);
                     foreach (var item in menu.lstHijos)
                     {
                         if (item.destino == "interna")
@@ -216,51 +184,82 @@
                             destino = item.url;
 
                         html += string.Format(
-                        @"<div class=""v-list-group__items"" style=""display: none;"">
-                            <div class=""v-list-group v-list-group--no-action v-list-group--sub-group"">
-                                <div tabindex=""0"" aria-expanded=""false"" role=""button""
-                                     class=""v-list-group__header v-list-item v-list-item--link theme--light"">
-                                    <div class=""v-list-item__icon v-list-group__header__prepend-icon"">
-                                        <i aria-hidden=""true"" class=""v-icon notranslate mdi mdi-menu-down theme--light""></i>
-                                    </div>
-                                    <div class=""v-list-item__content"">
-                                        <div class=""v-list-item__title"">
-                                            <a target=""{0}"" href=""{1}"">{2}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>", item._target, destino, item.texto);
+                        @"<li>
+                            <a href=""Page_{0}.html"" target=""{1}"">{2}</a>
+                          </li>
+                        ", destino, item._target, item.texto);
                     }
-                    html += "</div>";
+                    html += @"</ul>
+                         </li>";
                 }
                 if (menu.tipo == 0)
                 {
+                    if (menu.destino == "interna")
+                        destino = string.Format("Pagina_{0}.html", menu.id_page);
+                    else
+                        destino = menu.url;
+
                     html += string.Format(
-                        @"
-                        <div tabindex=""-1"" role=""listitem"" class=""v-list-item theme--light"">
-                            <div class=""v-list-item__icon"">
-                                <i aria-hidden=""true"" class=""v-icon notranslate fa fa-chevron-right material-icons theme--light""></i>
-                            </div>
-                            <div class=""v-list-item__content"">
-                                <div class=""v-list-item__title"">
-                                    <a target=""{0}"" href=""{1}"">{2}</a>
-                                </div>
-                            </div>
-                        </div>
-                        ", menu._target, menu.url, menu.texto);
+                        @"<li class=""scrollToLink"">
+                            <a href=""{0}"" target=""{1}"">{2}</a>
+                          </li>
+                        ", destino, menu._target, menu.texto);
                 }
-                html += @"
-                            <hr role=""separator"" aria-orientation=""horizontal"" class=""v-divider theme--light"">
-                        </div>
-                        ";
+            }
+
+            html = @"</div>
+                <ul class=""mobile-nav__contact list-unstyled"">
+                    <li>
+                        <i class=""fa fa-envelope""></i>
+                        <a href=""mailto:needhelp@packageName__.com"">needhelp@roofsie.com</a>
+                    </li>
+                    <li>
+                        <i class=""fa fa-phone-alt""></i>
+                        <a href=""tel:666-888-0000"">666 888 0000</a>
+                    </li>
+                </ul>
+                <div class=""mobile-nav__top"">
+                    <div class=""mobile-nav__social"">";
+
+
+            if (objDatos.facebook != string.Empty)
+            {
+                html += string.Format(
+                @"<a href=""{0}"">
+                    <i class=""fab fa-facebook-square""></i>
+                  </a>", objDatos.facebook);
+            }
+            if (objDatos.instagram != string.Empty)
+            {
+                html += string.Format(
+                @"<a href=""{0}"">
+                    <i class=""fab fa-instagram""></i>
+                  </a>", objDatos.instagram);
+            }
+            if (objDatos.youtube != string.Empty)
+            {
+                html += string.Format(
+                @"<a href=""{0}"" style=""margin-right: 10px;"">
+                    <i class=""fab fa-youtube"" style=""font-size: 28px;""></i>
+                  </a>", objDatos.youtube);
+            }
+            if (objDatos.twitter != string.Empty)
+            {
+                html += string.Format(
+                @"<a href=""{0}"" style=""margin-right: 10px;"">
+                    <i class=""fab fa-twitter"" style=""font-size: 28px;""></i>
+                  </a>", objDatos.twitter);
             }
             html += @"
-                <div class=""v-navigation-drawer__border""></div>
-            </aside>
-        </div>
-                    ";
-                return html;
+                    </div>
+                </div>
+            </div>
+        </div>";
+
+
+
+
+            return html;
         }
     }
 }

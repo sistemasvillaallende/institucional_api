@@ -12,7 +12,7 @@
             List<Entities.Cards> cardsList = Entities.Cards.readActivos(idSeccion);
 
             html = string.Format(
-                    @"<section style=""margin-top:50px; margin-bottom:50px;"">
+                    @"<section style=""margin-bottom:50px;"">
                         <div class=""container"">
                         <div class=""row"">
                             <div class=""col"">

@@ -19,23 +19,16 @@
 :root {
   --roofsie-font: 'Manrope', sans-serif;
   --roofsie-reey-font: "reeyregular";
-  /*--roofsie-gray: #6c6b6f;*/
-  --roofsie-gray: #6F6F6E;
-  /*--roofsie-gray-rgb: 108, 107, 111;*/
-  --roofsie-gray-rgb: 111, 111, 110;
-  --roofsie-white: #FFD300;
-  --roofsie-white-rgb: 255, 211, 0;
-  /*--roofsie-base: #ff4f47;*/
-  --roofsie-base: #F3F0ED;
-  /*--roofsie-base-rgb: 255, 79, 71;*/
-  --roofsie-base-rgb: 243, 240, 237;
+  --roofsie-gray: #6c6b6f;
+  --roofsie-gray-rgb: 108, 107, 111;
+  --roofsie-white: #ffffff;
+  --roofsie-white-rgb: 255, 255, 255;
+  --roofsie-base: #ff4f47;
+  --roofsie-base-rgb: 255, 79, 71;
   --roofsie-black: #1c1b1f;
   --roofsie-black-rgb: 28, 27, 31;
-  /*--roofsie-primary: #f4f1ee;*/
-  --roofsie-primary: #C6C6C5;
-  /*--roofsie-primary-rgb: 244, 241, 238;*/
-  --roofsie-primary-rgb: 198, 198, 197;
-
+  --roofsie-primary: #f4f1ee;
+  --roofsie-primary-rgb: 244, 241, 238;
   --roofsie-bdr-radius: 5px;
 
 }
@@ -47,7 +40,7 @@
 .gutter-y-30 {
   --bs-gutter-y: 30px;
 }
-/*
+
 body {
   font-family: var(--roofsie-font);
   color: var(--roofsie-gray);
@@ -55,7 +48,7 @@ body {
   line-height: 30px;
   font-weight: 500;
 }
-*/
+
 body.locked {
   overflow: hidden;
 }
@@ -339,7 +332,7 @@ ul {
 .section-title__title {
   margin: 0;
   color: var(--roofsie-black);
-  font-size: 36px;
+  font-size: 48px;
   line-height: 58px;
   font-weight: 800;
 }
@@ -454,7 +447,7 @@ ul {
 }
 
 .scroll-to-top i {
-  color: #ffd142;
+  color: #ffffff;
   font-size: 18px;
   line-height: 45px;
 }
@@ -829,7 +822,7 @@ ul {
 .main-menu .main-menu__list>li:hover>a,
 .stricky-header .main-menu__list>li.current>a,
 .stricky-header .main-menu__list>li:hover>a {
-  color: #ffd142;
+  color: var(--roofsie-base);
 }
 
 .main-menu .main-menu__list>li>ul,
@@ -1870,7 +1863,7 @@ ul {
 .main-menu-two .main-menu__list>li:hover>a,
 .stricky-header.main-menu-two .main-menu__list>li.current>a,
 .stricky-header.main-menu-two .main-menu__list>li:hover>a {
-  color: var(--roofsie-white);
+  color: var(--roofsie-base);
 }
 
 .stricky-header .main-menu-two__wrapper-inner {
@@ -2400,7 +2393,7 @@ ul {
 
 .main-slider .container {
   position: relative;
-  padding-top: 90px;
+  padding-top: 157px;
   padding-bottom: 155px;
   z-index: 30;
 }
@@ -2478,10 +2471,10 @@ ul {
 
 .main-slider__title {
   position: relative;
-  font-size: 50px;
+  font-size: 70px;
   color: var(--roofsie-white);
   font-weight: 800;
-  line-height: 50px;
+  line-height: 80px;
   margin-bottom: 28px;
   opacity: 0;
   visibility: hidden;
@@ -2497,7 +2490,7 @@ ul {
 
 .main-slider__text {
   font-size: 18px;
-  color: white;
+  color: var(--roofsie-white);
   font-weight: 500;
   line-height: 30px;
   padding-bottom: 42px;
@@ -3555,7 +3548,6 @@ ul {
 }
 
 .services-one__content {
-	min-height: 280px;
   position: relative;
   display: block;
   background-color: rgb(255, 255, 255);
@@ -3600,7 +3592,6 @@ ul {
   font-weight: 800;
   line-height: 34px;
   margin-bottom: 14px;
-  min-height: 150px;
 }
 
 .services-one__title a {
@@ -3610,7 +3601,7 @@ ul {
 }
 
 .services-one__title a:hover {
-  color: #ffd142;
+  color: var(--roofsie-base);
 }
 
 .services-one__read-more {
@@ -3683,9 +3674,9 @@ ul {
   position: absolute;
   top: -335px;
   right: 309px;
-  background-image: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFD300 100%);
-  background-image: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFD300 100%);
-  background-image: -ms-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFD300 100%);
+  background-image: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(255, 79, 71) 100%);
+  background-image: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(255, 79, 71) 100%);
+  background-image: -ms-linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(255, 79, 71) 100%);
   opacity: 0.502;
   width: 98px;
   height: 765px;
@@ -3746,7 +3737,7 @@ ul {
   position: relative;
   display: inline-block;
   font-size: 64px;
-  color: #ffd142;
+  color: var(--roofsie-base);
   -webkit-transition: all 500ms linear;
   transition: all 500ms linear;
   -webkit-transition-delay: 0.1s;
@@ -4917,7 +4908,7 @@ ul {
 }
 
 .footer-widget__about-text {
-  color: #F3F0ED;
+  color: var(--roofsie-white);
   line-height: 30px;
   font-size: 20px;
   font-weight: 700;
@@ -5000,7 +4991,7 @@ ul {
 
 .footer-widget__title {
   font-size: 20px;
-  color: #F3F0ED;
+  color: var(--roofsie-white);
   font-weight: 800;
   line-height: 20px;
   margin-bottom: 30px;
