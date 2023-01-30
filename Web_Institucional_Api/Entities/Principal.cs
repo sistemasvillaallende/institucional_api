@@ -13,7 +13,9 @@
             html += Entities.Componentes.Carrusel.get(1);
             html += Entities.Componentes.Cards.getCards(idPagina, 10);
             html += Entities.Componentes.Cards2.getCards(idPagina, 53);
-            html += Entities.Componentes.ExpansionPanels.getCards(idPagina, 2);
+            html += Entities.Componentes.Acordion.getCards(idPagina, 2);
+            html += Entities.Componentes.TabsHorizontal.getCards(idPagina, 3);
+            html += Entities.Componentes.TabsVertical.getCards(idPagina, 8);
             html += @"</body>
                     </html>";
             return html;
@@ -51,6 +53,35 @@
     <script src=""js/roofsie.js""></script>
     <script>
         $(document).ready(function() {
+              if ($("".accrodion-grp"").length) {
+                var accrodionGrp = $("".accrodion-grp"");
+                        accrodionGrp.each(function() {
+                            var accrodionName = $(this).data(""grp-name"");
+                            var Self = $(this);
+                            var accordion = Self.find("".accrodion"");
+                            Self.addClass(accrodionName);
+                            Self.find("".accrodion .accrodion-content"").hide();
+                            Self.find("".accrodion.active"").find("".accrodion-content"").show();
+                            accordion.each(function() {
+                    $(this)
+                      .find("".accrodion-title"")
+                      .on(""click"", function() {
+                                    if ($(this).parent().hasClass(""active"") === false) {
+                          $("".accrodion-grp."" + accrodionName)
+                            .find("".accrodion"")
+                            .removeClass(""active"");
+                          $("".accrodion-grp."" + accrodionName)
+                            .find("".accrodion"")
+                            .find("".accrodion-content"")
+                            .slideUp();
+                          $(this).parent().addClass(""active"");
+                          $(this).parent().find("".accrodion-content"").slideDown();
+                                    }
+                                });
+                            });
+                        });
+                    }
+
             $("".mobile-nav__toggler"").on(""click"", function (e) {
                 e.preventDefault();
                 $("".mobile-nav__wrapper"").toggleClass(""expanded"");
@@ -107,7 +138,6 @@
                 <meta http-equiv=""Content-Type"" content=""text/html; charset=UTF-8"">
                 <meta name=""viewport"" content=""width=device-width,initial-scale=1"">
                 <title>Municipalidad de Villa Allende</title>
-    
                 <link rel=""preconnect"" href=""https://fonts.googleapis.com/"">
                 <link rel=""preconnect"" href=""https://fonts.gstatic.com/"">
                 <link href=""css/css2.css"" rel=""stylesheet"">

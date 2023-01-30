@@ -69,13 +69,13 @@ namespace Web_Institucional_Api.Entities
                     switch (obj.tipo)
                     {
                         case 1:
-                            obj._tipo = "Paneles Expansibles";
+                            obj._tipo = "Paneles Expansibles";//LISTO
                             break;
                         case 2:
-                            obj._tipo = "Pestañas Horizontales";
+                            obj._tipo = "Pestañas Horizontales";//LISTO
                             break;
                         case 3:
-                            obj._tipo = "Paneles Verticales";
+                            obj._tipo = "Paneles Verticales";//LISTO
                             break;
                         case 4:
                             obj._tipo = "Galeria de Imagenes";
@@ -90,13 +90,13 @@ namespace Web_Institucional_Api.Entities
                             obj._tipo = "HTML Libre";
                             break;
                         case 8:
-                            obj._tipo = "Tarjetas";
+                            obj._tipo = "Tarjetas";//LISTO
                             break;
                         case 9:
-                            obj._tipo = "Carrusel";
+                            obj._tipo = "Carrusel";//LISTO
                             break;
                         case 10:
-                            obj._tipo = "Tarjetas Autoridades";
+                            obj._tipo = "Tarjetas Autoridades";//LISTO
                             break;
                         case 11:
                             obj._tipo = "Linea de Tiempo";

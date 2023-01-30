@@ -166,11 +166,7 @@
 					    <img src=""img/{0}"" width=""143"" alt="""">
 				    </a>
                 </div>
-<<<<<<< HEAD
-                <div class=""mobile-nav__container"">
-=======
                 <div class=""mobile-nav__container""> 
->>>>>>> 4ebcfeba3d024e9118f551d7b5836e69a31e21ab
                     <ul class=""main-menu__list"">", objDatos.logo);
             foreach (Entities.Menu menu in lstMenu)
             {
@@ -214,11 +210,7 @@
                 }
             }
 
-<<<<<<< HEAD
-            html += @"</div>
-=======
             html += @"</ul></div>
->>>>>>> 4ebcfeba3d024e9118f551d7b5836e69a31e21ab
                 <ul class=""mobile-nav__contact list-unstyled"">
                     <li>
                         <i class=""fa fa-envelope""></i>
