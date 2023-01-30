@@ -166,7 +166,8 @@
 					    <img src=""img/{0}"" width=""143"" alt="""">
 				    </a>
                 </div>
-                <div class=""mobile-nav__container"">", objDatos.logo);
+                <div class=""mobile-nav__container"">
+                    <ul class=""main-menu__list"">", objDatos.logo);
             foreach (Entities.Menu menu in lstMenu)
             {
                 if (menu.tipo == 1)
@@ -207,7 +208,7 @@
                 }
             }
 
-            html = @"</div>
+            html += @"</div>
                 <ul class=""mobile-nav__contact list-unstyled"">
                     <li>
                         <i class=""fa fa-envelope""></i>
