@@ -12,29 +12,29 @@
             List<Entities.Cards> cardsList = Entities.Cards.readActivos(idSeccion);
 
             html = string.Format(
-                    @"<section style=""margin-bottom:50px;"">
+                    @"<section style=""margin-top:80px;"" id=""seccion_p{0}s_{1}"">
                         <div class=""container"">
-                        <div class=""row"">
-                            <div class=""col"">
-                                <h2 style=""position: relative; color: var(--roofsie-gray);
-                                    font-weight: 800; line-height: 40px; margin-bottom: 10px; "">
-                                        {0}
-                                </h2>
-                                <p style=""font-size:18px; color: var(--roofsie-gray);
-                                    line-height:18px; margin-bottom:10px; "">
-                                    {1}
-                                </p>
-                            </div>
-                        </div>", seccion.titulo, seccion.subtitulo);
+                            <div class=""row"">
+                                <div class=""col"">
+                                    <h2 style=""position: relative; color: var(--roofsie-gray);
+                                        font-weight: 800; line-height: 40px; margin-bottom: 10px; "">
+                                            {2}
+                                    </h2>
+                                    <p style=""font-size:18px; color: var(--roofsie-gray);
+                                        line-height:18px; margin-bottom:10px; "">
+                                        {3}
+                                    </p>
+                                </div>
+                            </div>", idPagina, idSeccion, seccion.titulo, seccion.subtitulo);
 
             for (int i = 0; i <= cardsList.Count / 3; i++)
             {
-                html += @"<div class=""row"">";
+                html += @"<div class=""row"" style=""margin-top:25px;"">";
                 if ((i + 1) * 3 - 3 < cardsList.Count)
                 {
                     html += string.Format(
                     @"
-                        <div class=""col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12"">
+                        <div style=""padding-top:25px;"" class=""col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12"">
                             <div class=""mx-auto my-12 v-card v-sheet theme--light elevation-10"">
                                 <div class=""v-image v-responsive theme--light"" 
                                     style=""height: 250px;"">
@@ -55,9 +55,7 @@
                                 <div class=""v-card__actions"" style=""text-align: center; display: 
                                     block; padding: 20px;"">
                                     <a target=""{4}"" href=""{5}"" 
-                                        color=""deep-purple lighten-2"" class=""btn"" 
-                                        style=""background-color: var(--roofsie-gray); 
-                                        color: var(--roofsie-white) !important;""> 
+                                        class=""thm-btn main-slider__btn""> 
                                         {6}
                                     </a>
                                 </div>
@@ -71,7 +69,7 @@
                 {
                     html += string.Format(
                     @"
-                        <div class=""col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12"">
+                        <div style=""padding-top:25px;"" class=""col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12"">
                             <div class=""mx-auto my-12 v-card v-sheet theme--light elevation-10"">
                                 <div class=""v-image v-responsive theme--light"" 
                                     style=""height: 250px;"">
@@ -92,9 +90,7 @@
                                 <div class=""v-card__actions"" style=""text-align: center; display: 
                                     block; padding: 20px;"">
                                     <a target=""{4}"" href=""{5}"" 
-                                        color=""deep-purple lighten-2"" class=""btn"" 
-                                        style=""background-color: var(--roofsie-gray); 
-                                        color: var(--roofsie-white) !important;""> 
+                                        class=""thm-btn main-slider__btn""> 
                                         {6}
                                     </a>
                                 </div>
@@ -108,7 +104,7 @@
                 {
                     html += string.Format(
                     @"
-                        <div class=""col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12"">
+                        <div style=""padding-top:25px;"" class=""col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12"">
                             <div class=""mx-auto my-12 v-card v-sheet theme--light elevation-10"">
                                 <div class=""v-image v-responsive theme--light"" 
                                     style=""height: 250px;"">
@@ -129,9 +125,7 @@
                                 <div class=""v-card__actions"" style=""text-align: center; display: 
                                     block; padding: 20px;"">
                                     <a target=""{4}"" href=""{5}"" 
-                                        color=""deep-purple lighten-2"" class=""btn"" 
-                                        style=""background-color: var(--roofsie-gray); 
-                                        color: var(--roofsie-white) !important;""> 
+                                        class=""thm-btn main-slider__btn""> 
                                         {6}
                                     </a>
                                 </div>
@@ -142,8 +136,9 @@
                         cardsList[(i + 1) * 3 - 1].callToActionlink, cardsList[(i + 1) * 3 - 1].callToActionTexto);
 
                 }
+                html += @"</div>";
             }
-            html += @"</div>";
+
             html += @"</div>";
             html += @"</section>";
             return html;
