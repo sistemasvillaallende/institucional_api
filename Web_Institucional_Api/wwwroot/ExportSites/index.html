@@ -18,7 +18,7 @@
                 <link rel="stylesheet" href="css/nouislider.pips.css">
                 <link rel="stylesheet" href="css/odometer.min.css">
                 <link rel="stylesheet" href="css/swiper.min.css">
-                <link rel="stylesheet" href="css/style.css">
+                <link rel="stylesheet" href="css/style.css?v=1">
                 <link rel="stylesheet" href="css/tiny-slider.min.css">
                 <link rel="stylesheet" href="css/stylesheet.css">
                 <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -56,7 +56,58 @@
     <script src="js/timePicker.js"></script>
     <script src="js/jquery.circleType.js"></script>
     <script src="js/jquery.lettering.min.js"></script>
+    <script src="js/home.js"></script>
     <script src="js/roofsie.js"></script>
+<<<<<<< HEAD
+=======
+    <script>
+        $(document).ready(function() {
+            $(".mobile-nav__toggler").on("click", function (e) {
+                e.preventDefault();
+                $(".mobile-nav__wrapper").toggleClass("expanded");
+                $("body").toggleClass("locked");
+            });
+
+                let dropdownAnchor = $(
+                    ".mobile-nav__container .main-menu__list .dropdown > a"
+                );
+                dropdownAnchor.each(function() {
+                    let self = $(this);
+                    let toggleBtn = document.createElement("BUTTON");
+                    toggleBtn.setAttribute("aria-label", "dropdown toggler");
+                    toggleBtn.innerHTML = "<i class='fa fa-angle-down'></i>";
+                    self.append(function() {
+                        return toggleBtn;
+                    });
+                    self.find("button").on("click", function(e) {
+                        e.preventDefault();
+                        let self = $(this);
+                        self.toggleClass("expanded");
+                        self.parent().toggleClass("expanded");
+                        self.parent().parent().children("ul").slideToggle();
+                    });
+                });
+                    var coll = document.getElementsByClassName("collapsible");
+                    var i;
+
+                    for (i = 0; i < coll.length; i++)
+                    {
+                        coll[i].addEventListener("click", function() {
+                            this.classList.toggle("active");
+                            var content = this.nextElementSibling;
+                            if (content.style.display === "block")
+                            {
+                                content.style.display = "none";
+                            }
+                            else
+                            {
+                                content.style.display = "block";
+                            }
+                        });
+                    }
+        });
+    </script>
+>>>>>>> 4ebcfeba3d024e9118f551d7b5836e69a31e21ab
     <header class="main-header-two clearfix">
             <div class="main-header-two__top">
                 <div class="container">
@@ -196,16 +247,30 @@
 					    <img src="img/Logo.png" width="143" alt="">
 				    </a>
                 </div>
+<<<<<<< HEAD
                 <div class="mobile-nav__container">
                     <ul class="main-menu__list"><li class="dropdown">
                             <a href="#">Ciudad</a>
+=======
+                <div class="mobile-nav__container"> 
+                    <ul class="main-menu__list"><li class="dropdown">
+                            <a href="#">Ciudad
+
+                            </a>
+>>>>>>> 4ebcfeba3d024e9118f551d7b5836e69a31e21ab
                             <ul class="border-top-2px">
                         <li>
                             <a href="Page_/Page/4.html" target="_self">Historia </a>
                           </li>
                         </ul>
                          </li><li class="dropdown">
+<<<<<<< HEAD
                             <a href="#">Gobierno</a>
+=======
+                            <a href="#">Gobierno
+
+                            </a>
+>>>>>>> 4ebcfeba3d024e9118f551d7b5836e69a31e21ab
                             <ul class="border-top-2px">
                         <li>
                             <a href="Page_/Page/25.html" target="_self">Autoridades </a>
@@ -226,7 +291,11 @@
                          </li><li class="scrollToLink">
                             <a href="/#services" target="_self">Noticias</a>
                           </li>
+<<<<<<< HEAD
                         </div>
+=======
+                        </ul></div>
+>>>>>>> 4ebcfeba3d024e9118f551d7b5836e69a31e21ab
                 <ul class="mobile-nav__contact list-unstyled">
                     <li>
                         <i class="fa fa-envelope"></i>
@@ -248,21 +317,84 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </div><section style="margin-bottom:50px;">
                         <div class="container">
+=======
+        </div>
+                <div class="main-slider clearfix" id="home">
+                    <div style="width:100%;" class="swiper-container thm-swiper__slider 
+                        swiper-container-fade swiper-container-initialized swiper-container-horizontal"
+                        data-swiper-options="{&quot;slidesPerView&quot;: 1, &quot;loop&quot;: true,
+                            &quot;effect&quot;: &quot;fade&quot;,
+                            &quot;pagination&quot;: {
+                            &quot;el&quot;: &quot;#main-slider-pagination&quot;,
+                            &quot;type&quot;: &quot;bullets&quot;,
+                            &quot;clickable&quot;: true
+                            },
+                            &quot;navigation&quot;: {
+                            &quot;nextEl&quot;: &quot;#main-slider__swiper-button-next&quot;,
+                            &quot;prevEl&quot;: &quot;#main-slider__swiper-button-prev&quot;
+                            },
+                            &quot;autoplay&quot;: {
+                            &quot;delay&quot;: 5000
+                            }}">
+                        <div class="swiper-wrapper" style="transition-duration: 0ms;">
+                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1"
+                        v-for="(item, index) in carrusel" :key="index"
+                        style="width: 1583px; transition-duration: 0ms; opacity: 1; 
+                        transform: translate3d(-1583px, 0px, 0px);">
+.                       <div class="image-layer"
+                            style="background-image: url('img/Pagina_1/Carrusel_1_Pagina_0.png')">
+                        </div>
+                    
+                    <div class="container" style="padding-top:90px;">
+>>>>>>> 4ebcfeba3d024e9118f551d7b5836e69a31e21ab
                         <div class="row">
-                            <div class="col">
-                                <h2 style="position: relative; color: var(--roofsie-gray);
-                                    font-weight: 800; line-height: 40px; margin-bottom: 10px; ">
-                                        Titulo de la Sección de Tarjetas
-                                </h2>
-                                <p style="font-size:18px; color: var(--roofsie-gray);
-                                    line-height:18px; margin-bottom:10px; ">
-                                    Subtitulo
-                                </p>
+                            <div class="col-xl-7 col-lg-8">
+                                <div class="main-slider__content">
+                                    <p class="main-slider__sub-title">Aqui subtitulo o reseña</p>
+                                    <h2 class="main-slider__title">Prueba Carrusel</h2>
+                                    <p class="main-slider__text">Aqui la bajada de texto que puede ser un poco mas larga</p>
+                                    <div class="main-slider__btn-box">
+                                        <a href="/Page/1" class="thm-btn main-slider__btn"
+                                            target="_self" style="padding:15px; font-weight:700"> Call To Action </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div><div class="row">
-                        <div class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                        </div>
+                    </div>
+                </div>
+                <div class="main-slider__nav">
+                    <div class="swiper-button-prev" id="main-slider__swiper-button-next" tabindex="0" role="button"
+                        aria-label="Next slide">
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <div class="swiper-button-next" id="main-slider__swiper-button-prev" tabindex="0" role="button"
+                        aria-label="Previous slide">
+                        <i class="fa fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+        </div>
+    </div>
+                    <section style="margin-top:80px;" id="seccion_p1s_10">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 style="position: relative; color: var(--roofsie-gray);
+                                        font-weight: 800; line-height: 40px; margin-bottom: 10px; ">
+                                            Titulo de la Sección de Tarjetas
+                                    </h2>
+                                    <p style="font-size:18px; color: var(--roofsie-gray);
+                                        line-height:18px; margin-bottom:10px; ">
+                                        Subtitulo
+                                    </p>
+                                </div>
+                            </div><div class="row" style="margin-top:25px;">
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="mx-auto my-12 v-card v-sheet theme--light elevation-10">
                                 <div class="v-image v-responsive theme--light" 
                                     style="height: 250px;">
@@ -283,16 +415,14 @@
                                 <div class="v-card__actions" style="text-align: center; display: 
                                     block; padding: 20px;">
                                     <a target="_self" href="/Page/1" 
-                                        color="deep-purple lighten-2" class="btn" 
-                                        style="background-color: var(--roofsie-gray); 
-                                        color: var(--roofsie-white) !important;"> 
+                                        class="thm-btn main-slider__btn"> 
                                         Mas Informacion
                                     </a>
                                 </div>
                             </div>                        
                         </div>
                     
-                        <div class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="mx-auto my-12 v-card v-sheet theme--light elevation-10">
                                 <div class="v-image v-responsive theme--light" 
                                     style="height: 250px;">
@@ -313,16 +443,14 @@
                                 <div class="v-card__actions" style="text-align: center; display: 
                                     block; padding: 20px;">
                                     <a target="_blank" href="/Page/1" 
-                                        color="deep-purple lighten-2" class="btn" 
-                                        style="background-color: var(--roofsie-gray); 
-                                        color: var(--roofsie-white) !important;"> 
+                                        class="thm-btn main-slider__btn"> 
                                         Mas Información
                                     </a>
                                 </div>
                             </div>                        
                         </div>
                     
-                        <div class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="mx-auto my-12 v-card v-sheet theme--light elevation-10">
                                 <div class="v-image v-responsive theme--light" 
                                     style="height: 250px;">
@@ -343,16 +471,14 @@
                                 <div class="v-card__actions" style="text-align: center; display: 
                                     block; padding: 20px;">
                                     <a target="_self" href="/Page/2" 
-                                        color="deep-purple lighten-2" class="btn" 
-                                        style="background-color: var(--roofsie-gray); 
-                                        color: var(--roofsie-white) !important;"> 
+                                        class="thm-btn main-slider__btn"> 
                                         Mas Informacion
                                     </a>
                                 </div>
                             </div>                        
                         </div>
-                    <div class="row">
-                        <div class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                    </div><div class="row" style="margin-top:25px;">
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="mx-auto my-12 v-card v-sheet theme--light elevation-10">
                                 <div class="v-image v-responsive theme--light" 
                                     style="height: 250px;">
@@ -373,13 +499,329 @@
                                 <div class="v-card__actions" style="text-align: center; display: 
                                     block; padding: 20px;">
                                     <a target="_self" href="/Page/3" 
-                                        color="deep-purple lighten-2" class="btn" 
-                                        style="background-color: var(--roofsie-gray); 
-                                        color: var(--roofsie-white) !important;"> 
+                                        class="thm-btn main-slider__btn"> 
                                         Mas Informacion
                                     </a>
                                 </div>
                             </div>                        
                         </div>
-                    </div></div></section></body>
+                    </div></div></section><section style="margin-top:80px;" id="seccion_p1s_53">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 style="position: relative; color: var(--roofsie-gray);
+                                        font-weight: 800; line-height: 40px; margin-bottom: 10px; ">
+                                            Titulo de la Sección de Tarjetas 2
+                                    </h2>
+                                    <p style="font-size:18px; color: var(--roofsie-gray);
+                                        line-height:18px; margin-bottom:10px; ">
+                                        Subtitulo
+                                    </p>
+                                </div>
+                            </div><div class="row" style="margin-top:25px;">
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="owl-item active">
+                                <div class="item">
+                                    <div style="box-shadow: 0px 0px 30px 0px rgb(0 0 0 / 10%); height: 183px;
+                                        border: 1px solid transparent; border-left: solid 10px #ede8e4; position: relative;
+                                        display: block;
+                                        border: 1px solid #ede8e4;
+                                        border-radius: var(--roofsie-bdr-radius);
+                                        background-color: rgb(255, 255, 255);
+                                        padding: 20px 20px 15px;
+                                        -webkit-transition: all 500ms ease;
+                                        transition: all 500ms ease;">
+                                        <div class="testimonial-one__client-info" style="height:100px;">
+                                            <div class="testimonial-one__client-img-box" 
+                                                style="position: absolute; border-radius: 0; 
+                                                    background: no-repeat;">
+                                                <div class="testimonial-one__client-img" 
+                                                    style="padding-right: 5px; border-right: 
+                                                    solid 6px #6f6f6e;">
+                                                    <img style="width: 95% !important; height: 85px; border-radius: 0;" 
+                                                        src="img/Pagina_1/Card_35_Seccion_53_Pagina_120231291511.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-one__client-details" style="margin-left: 100px;">
+                                                <h4 class="testimonial-one__client-name" 
+                                                    style="font-size:16px; font-size:16px; font-weight: 500; 
+                                                        line-height: 20px;">Titulo de tarjeta</h4>
+                                                <p class="testimonial-one__client-sub-title" 
+                                                    style="font-size: 18px; font-weight: 800;">Subtitulo de tarjeta</p>
+                                            </div>
+                                        </div>
+                                        <hr style="margin-bottom: 7px; padding-top: 2px;"/>
+                                        <div style="padding-top: 5px; text-align: center;" 
+                                            class="testimonial-one__text"><p class="ql-align-center">Pie de tarjeta</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="owl-item active">
+                                <div class="item">
+                                    <div style="box-shadow: 0px 0px 30px 0px rgb(0 0 0 / 10%); height: 183px;
+                                        border: 1px solid transparent; border-left: solid 10px #ede8e4; position: relative;
+                                        display: block;
+                                        border: 1px solid #ede8e4;
+                                        border-radius: var(--roofsie-bdr-radius);
+                                        background-color: rgb(255, 255, 255);
+                                        padding: 20px 20px 15px;
+                                        -webkit-transition: all 500ms ease;
+                                        transition: all 500ms ease;">
+                                        <div class="testimonial-one__client-info" style="height:100px;">
+                                            <div class="testimonial-one__client-img-box" 
+                                                style="position: absolute; border-radius: 0; 
+                                                    background: no-repeat;">
+                                                <div class="testimonial-one__client-img" 
+                                                    style="padding-right: 5px; border-right: 
+                                                    solid 6px #6f6f6e;">
+                                                    <img style="width: 95% !important; height: 85px; border-radius: 0;" 
+                                                        src="img/Pagina_1/Card_37_Seccion_53_Pagina_1202312915119.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-one__client-details" style="margin-left: 100px;">
+                                                <h4 class="testimonial-one__client-name" 
+                                                    style="font-size:16px; font-size:16px; font-weight: 500; 
+                                                        line-height: 20px;">Titulo</h4>
+                                                <p class="testimonial-one__client-sub-title" 
+                                                    style="font-size: 18px; font-weight: 800;">Subtitulo de Tarjea</p>
+                                            </div>
+                                        </div>
+                                        <hr style="margin-bottom: 7px; padding-top: 2px;"/>
+                                        <div style="padding-top: 5px; text-align: center;" 
+                                            class="testimonial-one__text"><p class="ql-align-center">Nota al pie</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="owl-item active">
+                                <div class="item">
+                                    <div style="box-shadow: 0px 0px 30px 0px rgb(0 0 0 / 10%); height: 183px;
+                                        border: 1px solid transparent; border-left: solid 10px #ede8e4; position: relative;
+                                        display: block;
+                                        border: 1px solid #ede8e4;
+                                        border-radius: var(--roofsie-bdr-radius);
+                                        background-color: rgb(255, 255, 255);
+                                        padding: 20px 20px 15px;
+                                        -webkit-transition: all 500ms ease;
+                                        transition: all 500ms ease;">
+                                        <div class="testimonial-one__client-info" style="height:100px;">
+                                            <div class="testimonial-one__client-img-box" 
+                                                style="position: absolute; border-radius: 0; 
+                                                    background: no-repeat;">
+                                                <div class="testimonial-one__client-img" 
+                                                    style="padding-right: 5px; border-right: 
+                                                    solid 6px #6f6f6e;">
+                                                    <img style="width: 95% !important; height: 85px; border-radius: 0;" 
+                                                        src="img/Pagina_1/Card_36_Seccion_53_Pagina_1202312915146.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-one__client-details" style="margin-left: 100px;">
+                                                <h4 class="testimonial-one__client-name" 
+                                                    style="font-size:16px; font-size:16px; font-weight: 500; 
+                                                        line-height: 20px;">Titulo de Tarjeta</h4>
+                                                <p class="testimonial-one__client-sub-title" 
+                                                    style="font-size: 18px; font-weight: 800;">Subtitulo</p>
+                                            </div>
+                                        </div>
+                                        <hr style="margin-bottom: 7px; padding-top: 2px;"/>
+                                        <div style="padding-top: 5px; text-align: center;" 
+                                            class="testimonial-one__text"><p class="ql-align-center">PIe de tarjeta</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="row" style="margin-top:25px;">
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="owl-item active">
+                                <div class="item">
+                                    <div style="box-shadow: 0px 0px 30px 0px rgb(0 0 0 / 10%); height: 183px;
+                                        border: 1px solid transparent; border-left: solid 10px #ede8e4; position: relative;
+                                        display: block;
+                                        border: 1px solid #ede8e4;
+                                        border-radius: var(--roofsie-bdr-radius);
+                                        background-color: rgb(255, 255, 255);
+                                        padding: 20px 20px 15px;
+                                        -webkit-transition: all 500ms ease;
+                                        transition: all 500ms ease;">
+                                        <div class="testimonial-one__client-info" style="height:100px;">
+                                            <div class="testimonial-one__client-img-box" 
+                                                style="position: absolute; border-radius: 0; 
+                                                    background: no-repeat;">
+                                                <div class="testimonial-one__client-img" 
+                                                    style="padding-right: 5px; border-right: 
+                                                    solid 6px #6f6f6e;">
+                                                    <img style="width: 95% !important; height: 85px; border-radius: 0;" 
+                                                        src="img/Pagina_1/Card_38_Seccion_53_Pagina_1202312915252.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-one__client-details" style="margin-left: 100px;">
+                                                <h4 class="testimonial-one__client-name" 
+                                                    style="font-size:16px; font-size:16px; font-weight: 500; 
+                                                        line-height: 20px;">Otra tarjeta</h4>
+                                                <p class="testimonial-one__client-sub-title" 
+                                                    style="font-size: 18px; font-weight: 800;">Comentario</p>
+                                            </div>
+                                        </div>
+                                        <hr style="margin-bottom: 7px; padding-top: 2px;"/>
+                                        <div style="padding-top: 5px; text-align: center;" 
+                                            class="testimonial-one__text"><p class="ql-align-center">Enlace a mas información</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="owl-item active">
+                                <div class="item">
+                                    <div style="box-shadow: 0px 0px 30px 0px rgb(0 0 0 / 10%); height: 183px;
+                                        border: 1px solid transparent; border-left: solid 10px #ede8e4; position: relative;
+                                        display: block;
+                                        border: 1px solid #ede8e4;
+                                        border-radius: var(--roofsie-bdr-radius);
+                                        background-color: rgb(255, 255, 255);
+                                        padding: 20px 20px 15px;
+                                        -webkit-transition: all 500ms ease;
+                                        transition: all 500ms ease;">
+                                        <div class="testimonial-one__client-info" style="height:100px;">
+                                            <div class="testimonial-one__client-img-box" 
+                                                style="position: absolute; border-radius: 0; 
+                                                    background: no-repeat;">
+                                                <div class="testimonial-one__client-img" 
+                                                    style="padding-right: 5px; border-right: 
+                                                    solid 6px #6f6f6e;">
+                                                    <img style="width: 95% !important; height: 85px; border-radius: 0;" 
+                                                        src="img/Pagina_1/Card_39_Seccion_53_Pagina_1202312915427.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-one__client-details" style="margin-left: 100px;">
+                                                <h4 class="testimonial-one__client-name" 
+                                                    style="font-size:16px; font-size:16px; font-weight: 500; 
+                                                        line-height: 20px;">Titulo de Tarjeta</h4>
+                                                <p class="testimonial-one__client-sub-title" 
+                                                    style="font-size: 18px; font-weight: 800;">Comentario</p>
+                                            </div>
+                                        </div>
+                                        <hr style="margin-bottom: 7px; padding-top: 2px;"/>
+                                        <div style="padding-top: 5px; text-align: center;" 
+                                            class="testimonial-one__text"><p class="ql-align-center">Mas Informaci'on</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div style="padding-top:25px;" class="col-12 col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="owl-item active">
+                                <div class="item">
+                                    <div style="box-shadow: 0px 0px 30px 0px rgb(0 0 0 / 10%); height: 183px;
+                                        border: 1px solid transparent; border-left: solid 10px #ede8e4; position: relative;
+                                        display: block;
+                                        border: 1px solid #ede8e4;
+                                        border-radius: var(--roofsie-bdr-radius);
+                                        background-color: rgb(255, 255, 255);
+                                        padding: 20px 20px 15px;
+                                        -webkit-transition: all 500ms ease;
+                                        transition: all 500ms ease;">
+                                        <div class="testimonial-one__client-info" style="height:100px;">
+                                            <div class="testimonial-one__client-img-box" 
+                                                style="position: absolute; border-radius: 0; 
+                                                    background: no-repeat;">
+                                                <div class="testimonial-one__client-img" 
+                                                    style="padding-right: 5px; border-right: 
+                                                    solid 6px #6f6f6e;">
+                                                    <img style="width: 95% !important; height: 85px; border-radius: 0;" 
+                                                        src="img/Pagina_1/Card_40_Seccion_53_Pagina_120231291553.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-one__client-details" style="margin-left: 100px;">
+                                                <h4 class="testimonial-one__client-name" 
+                                                    style="font-size:16px; font-size:16px; font-weight: 500; 
+                                                        line-height: 20px;">Ultima tarjeta</h4>
+                                                <p class="testimonial-one__client-sub-title" 
+                                                    style="font-size: 18px; font-weight: 800;">subtitulo</p>
+                                            </div>
+                                        </div>
+                                        <hr style="margin-bottom: 7px; padding-top: 2px;"/>
+                                        <div style="padding-top: 5px; text-align: center;" 
+                                            class="testimonial-one__text"><p>Pie de Tarjeta</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="row" style="margin-top:25px;"></div></div></section><section style="margin-top:80px;" id="seccion_p1s_2">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 style="position: relative; color: var(--roofsie-gray);
+                                        font-weight: 800; line-height: 40px; margin-bottom: 10px; ">
+                                            Mis paneles expansibles
+                                    </h2>
+                                    <p style="font-size:18px; color: var(--roofsie-gray);
+                                        line-height:18px; margin-bottom:10px; ">
+                                        Subtitulo de la sección de paneles expansibles
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:25px;">
+                                <div class="col col-12">
+                                    <div class="v-item-group theme--light v-expansion-panels"><div aria-expanded="false" class="v-expansion-panel" style="margin-bottom: 20px;
+                        border-radius: 5px;">
+                        <button type="button" class="thm-btn main-slider__btn collapsible"
+                            style="font-size: 20px; text-align: left; width: 100%; border: none;"> Panel 1
+                            <div class="v-expansion-panel-header__icon" style="float: right;">
+                                <i aria-hidden="true" style="height: 30px; width: 30px; top: 
+                                    5px;font-size: 16px; line-height: 33px;"
+                                    class="fa fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="v-expansion-panel-content content-expansion-panels" style="display: none;">
+                            <div class="v-expansion-panel-content__wrap"><h2><br></h2><h2>What is Lorem Ipsum?</h2><p><br></p><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p><p><br></p>
+                    <div style="margin-top: 15px; padding: 15px 20px; border: 1px solid lightgray; 
+                        border-radius: 15px;">
+                        <a href="archivos/Pagina_1/Archivo_1_Seccion_2_contenido_3.pdf" 
+                            target="_blank" style="width: 100%; display: block;">Prueba 
+                            <span class="fa fa-download" style="float: right;"></span>
+                        </a>
+                    </div>
+                    
+                    <div style="margin-top: 15px; padding: 15px 20px; border: 1px solid lightgray; 
+                        border-radius: 15px;">
+                        <a href="archivos/Pagina_1/Archivo_2_Seccion_2_contenido_3.pdf" 
+                            target="_blank" style="width: 100%; display: block;">Prueba 2 
+                            <span class="fa fa-download" style="float: right;"></span>
+                        </a>
+                    </div>
+                     </div></div></div><div aria-expanded="false" class="v-expansion-panel" style="margin-bottom: 20px;
+                        border-radius: 5px;">
+                        <button type="button" class="thm-btn main-slider__btn collapsible"
+                            style="font-size: 20px; text-align: left; width: 100%; border: none;"> Pregunta sobre lo que quieras 1
+                            <div class="v-expansion-panel-header__icon" style="float: right;">
+                                <i aria-hidden="true" style="height: 30px; width: 30px; top: 
+                                    5px;font-size: 16px; line-height: 33px;"
+                                    class="fa fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="v-expansion-panel-content content-expansion-panels" style="display: none;">
+                            <div class="v-expansion-panel-content__wrap"><h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p><br></p> </div></div></div><div aria-expanded="false" class="v-expansion-panel" style="margin-bottom: 20px;
+                        border-radius: 5px;">
+                        <button type="button" class="thm-btn main-slider__btn collapsible"
+                            style="font-size: 20px; text-align: left; width: 100%; border: none;"> Pregunta 2
+                            <div class="v-expansion-panel-header__icon" style="float: right;">
+                                <i aria-hidden="true" style="height: 30px; width: 30px; top: 
+                                    5px;font-size: 16px; line-height: 33px;"
+                                    class="fa fa-chevron-down"></i>
+                            </div>
+                        </button>
+                        <div class="v-expansion-panel-content content-expansion-panels" style="display: none;">
+                            <div class="v-expansion-panel-content__wrap"><p>sdiofjhsoidhgoidsfhgiodhoighiodsfhglkdfhgiodff</p><p>fd,gmkdfjoigdfpgcx</p><p>dfkodhfuioklghdc</p> </div></div></div></div></div></section></body>
                     </html>

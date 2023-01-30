@@ -10,7 +10,10 @@
             html += crearHead();
             html += crearBody();
             html += Entities.Componentes.Header1.read(1);
+            html += Entities.Componentes.Carrusel.get(1);
             html += Entities.Componentes.Cards.getCards(idPagina, 10);
+            html += Entities.Componentes.Cards2.getCards(idPagina, 53);
+            html += Entities.Componentes.ExpansionPanels.getCards(idPagina, 2);
             html += @"</body>
                     </html>";
             return html;
@@ -44,7 +47,55 @@
     <script src=""js/timePicker.js""></script>
     <script src=""js/jquery.circleType.js""></script>
     <script src=""js/jquery.lettering.min.js""></script>
+    <script src=""js/home.js""></script>
     <script src=""js/roofsie.js""></script>
+    <script>
+        $(document).ready(function() {
+            $("".mobile-nav__toggler"").on(""click"", function (e) {
+                e.preventDefault();
+                $("".mobile-nav__wrapper"").toggleClass(""expanded"");
+                $(""body"").toggleClass(""locked"");
+            });
+
+                let dropdownAnchor = $(
+                    "".mobile-nav__container .main-menu__list .dropdown > a""
+                );
+                dropdownAnchor.each(function() {
+                    let self = $(this);
+                    let toggleBtn = document.createElement(""BUTTON"");
+                    toggleBtn.setAttribute(""aria-label"", ""dropdown toggler"");
+                    toggleBtn.innerHTML = ""<i class='fa fa-angle-down'></i>"";
+                    self.append(function() {
+                        return toggleBtn;
+                    });
+                    self.find(""button"").on(""click"", function(e) {
+                        e.preventDefault();
+                        let self = $(this);
+                        self.toggleClass(""expanded"");
+                        self.parent().toggleClass(""expanded"");
+                        self.parent().parent().children(""ul"").slideToggle();
+                    });
+                });
+                    var coll = document.getElementsByClassName(""collapsible"");
+                    var i;
+
+                    for (i = 0; i < coll.length; i++)
+                    {
+                        coll[i].addEventListener(""click"", function() {
+                            this.classList.toggle(""active"");
+                            var content = this.nextElementSibling;
+                            if (content.style.display === ""block"")
+                            {
+                                content.style.display = ""none"";
+                            }
+                            else
+                            {
+                                content.style.display = ""block"";
+                            }
+                        });
+                    }
+        });
+    </script>
     ";
             return html;
         }
@@ -70,7 +121,7 @@
                 <link rel=""stylesheet"" href=""css/nouislider.pips.css"">
                 <link rel=""stylesheet"" href=""css/odometer.min.css"">
                 <link rel=""stylesheet"" href=""css/swiper.min.css"">
-                <link rel=""stylesheet"" href=""css/style.css"">
+                <link rel=""stylesheet"" href=""css/style.css?v=1"">
                 <link rel=""stylesheet"" href=""css/tiny-slider.min.css"">
                 <link rel=""stylesheet"" href=""css/stylesheet.css"">
                 <link rel=""stylesheet"" href=""css/owl.carousel.min.css"">

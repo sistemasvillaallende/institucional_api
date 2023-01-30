@@ -8,13 +8,13 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Web_Institucional_Api
 build_property.RootNamespace = Web_Institucional_Api
-build_property.ProjectDir = C:\NET2018\Web_Institucional_Api\Web_Institucional_Api\
+build_property.ProjectDir = D:\NET2022\institucional_api\Web_Institucional_Api\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\NET2018\Web_Institucional_Api\Web_Institucional_Api
+build_property.MSBuildProjectDirectory = D:\NET2022\institucional_api\Web_Institucional_Api
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/NET2018/Web_Institucional_Api/Web_Institucional_Api/Index.cshtml]
+[D:/NET2022/institucional_api/Web_Institucional_Api/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = SW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

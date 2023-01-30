@@ -166,7 +166,11 @@
 					    <img src=""img/{0}"" width=""143"" alt="""">
 				    </a>
                 </div>
+<<<<<<< HEAD
                 <div class=""mobile-nav__container"">
+=======
+                <div class=""mobile-nav__container""> 
+>>>>>>> 4ebcfeba3d024e9118f551d7b5836e69a31e21ab
                     <ul class=""main-menu__list"">", objDatos.logo);
             foreach (Entities.Menu menu in lstMenu)
             {
@@ -174,7 +178,9 @@
                 {
                     html += string.Format(
                         @"<li class=""dropdown"">
-                            <a href=""#"">{0}</a>
+                            <a href=""#"">{0}
+
+                            </a>
                             <ul class=""border-top-2px"">
                         ", menu.texto);
                     foreach (var item in menu.lstHijos)
@@ -208,7 +214,11 @@
                 }
             }
 
+<<<<<<< HEAD
             html += @"</div>
+=======
+            html += @"</ul></div>
+>>>>>>> 4ebcfeba3d024e9118f551d7b5836e69a31e21ab
                 <ul class=""mobile-nav__contact list-unstyled"">
                     <li>
                         <i class=""fa fa-envelope""></i>
