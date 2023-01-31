@@ -16,6 +16,7 @@
             html += Entities.Componentes.Acordion.getCards(idPagina, 2);
             html += Entities.Componentes.TabsHorizontal.getCards(idPagina, 3);
             html += Entities.Componentes.TabsVertical.getCards(idPagina, 8);
+            html += Entities.Componentes.Galeria.getCards(idPagina, 4);
             html += @"</body>
                     </html>";
             return html;
@@ -53,6 +54,31 @@
     <script src=""js/roofsie.js""></script>
     <script>
         $(document).ready(function() {
+            if ($("".img-popup"").length) {
+                var groups = { };
+                $("".img-popup"").each(function() {
+                    var id = parseInt($(this).attr(""data-group""), 10);
+
+                    if (!groups[id])
+                    {
+                        groups[id] = [];
+                    }
+
+                    groups[id].push(this);
+                });
+
+                $.each(groups, function() {
+                    $(this).magnificPopup({
+                        type: ""image"",
+                        closeOnContentClick: true,
+                        closeBtnInside: false,
+                        gallery:
+                        {
+                            enabled: true
+                        }
+                    });
+                });
+            }
               if ($("".accrodion-grp"").length) {
                 var accrodionGrp = $("".accrodion-grp"");
                         accrodionGrp.each(function() {

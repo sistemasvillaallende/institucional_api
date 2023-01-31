@@ -78,7 +78,7 @@ namespace Web_Institucional_Api.Entities
                             obj._tipo = "Paneles Verticales";//LISTO
                             break;
                         case 4:
-                            obj._tipo = "Galeria de Imagenes";
+                            obj._tipo = "Galeria de Imagenes";//LISTO
                             break;
                         case 5:
                             obj._tipo = "Agenda de Eventos";

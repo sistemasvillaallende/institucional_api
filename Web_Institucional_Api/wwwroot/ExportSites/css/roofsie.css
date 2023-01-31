@@ -17,19 +17,19 @@
 # Common
 --------------------------------------------------------------*/
 :root {
-  --roofsie-font: 'Manrope', sans-serif;
-  --roofsie-reey-font: "reeyregular";
-  --roofsie-gray: #6c6b6f;
-  --roofsie-gray-rgb: 108, 107, 111;
-  --roofsie-white: #ffffff;
-  --roofsie-white-rgb: 255, 255, 255;
-  --roofsie-base: #ff4f47;
-  --roofsie-base-rgb: 255, 79, 71;
-  --roofsie-black: #1c1b1f;
-  --roofsie-black-rgb: 28, 27, 31;
-  --roofsie-primary: #f4f1ee;
-  --roofsie-primary-rgb: 244, 241, 238;
-  --roofsie-bdr-radius: 5px;
+--roofsie-font: 'Manrope', sans-serif;
+    --roofsie-reey-font: "reeyregular";
+    --roofsie-gray: #898989;
+    --roofsie-gray-rgb: 137, 137, 137;
+    --roofsie-white: #ffffff;
+    --roofsie-white-rgb: 255, 255, 255;
+    --roofsie-base: #e6621f;
+    --roofsie-base-rgb: 230, 98, 31;
+    --roofsie-black: #333333;
+    --roofsie-black-rgb: 51, 51, 51;
+    --roofsie-primary: #EDEDEE;
+    --roofsie-primary-rgb: 237, 237, 238;
+    --roofsie-bdr-radius: 5px;
 
 }
 
