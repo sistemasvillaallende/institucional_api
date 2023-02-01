@@ -12,20 +12,22 @@
             List<Entities.Cards> cardsList = Entities.Cards.readActivos(idSeccion);
 
             html = string.Format(
-                    @"<section style=""margin-top:80px;"" id=""seccion_p{0}s_{1}"">
+                    @"<section style=""padding-top:80px; padding-bottom:40px; background-color:{0}""
+                        id=""seccion_p{1}s_{2}"">
                         <div class=""container"">
                             <div class=""row"">
                                 <div class=""col"">
                                     <h2 style=""position: relative; color: var(--roofsie-gray);
                                         font-weight: 800; line-height: 40px; margin-bottom: 10px; "">
-                                            {2}
+                                            {3}
                                     </h2>
                                     <p style=""font-size:18px; color: var(--roofsie-gray);
                                         line-height:18px; margin-bottom:10px; "">
-                                        {3}
+                                        {4}
                                     </p>
                                 </div>
-                            </div>", idPagina, idSeccion, seccion.titulo, seccion.subtitulo);
+                            </div>", 
+                    seccion.background_color, idPagina, idSeccion, seccion.titulo, seccion.subtitulo);
 
             for (int i = 0; i <= cardsList.Count / 3; i++)
             {

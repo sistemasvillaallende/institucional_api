@@ -4,7 +4,6 @@
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                 <meta name="viewport" content="width=device-width,initial-scale=1">
                 <title>Municipalidad de Villa Allende</title>
-    
                 <link rel="preconnect" href="https://fonts.googleapis.com/">
                 <link rel="preconnect" href="https://fonts.gstatic.com/">
                 <link href="css/css2.css" rel="stylesheet">
@@ -60,6 +59,60 @@
     <script src="js/roofsie.js"></script>
     <script>
         $(document).ready(function() {
+            if ($(".img-popup").length) {
+                var groups = { };
+                $(".img-popup").each(function() {
+                    var id = parseInt($(this).attr("data-group"), 10);
+
+                    if (!groups[id])
+                    {
+                        groups[id] = [];
+                    }
+
+                    groups[id].push(this);
+                });
+
+                $.each(groups, function() {
+                    $(this).magnificPopup({
+                        type: "image",
+                        closeOnContentClick: true,
+                        closeBtnInside: false,
+                        gallery:
+                        {
+                            enabled: true
+                        }
+                    });
+                });
+            }
+              if ($(".accrodion-grp").length) {
+                var accrodionGrp = $(".accrodion-grp");
+                        accrodionGrp.each(function() {
+                            var accrodionName = $(this).data("grp-name");
+                            var Self = $(this);
+                            var accordion = Self.find(".accrodion");
+                            Self.addClass(accrodionName);
+                            Self.find(".accrodion .accrodion-content").hide();
+                            Self.find(".accrodion.active").find(".accrodion-content").show();
+                            accordion.each(function() {
+                    $(this)
+                      .find(".accrodion-title")
+                      .on("click", function() {
+                                    if ($(this).parent().hasClass("active") === false) {
+                          $(".accrodion-grp." + accrodionName)
+                            .find(".accrodion")
+                            .removeClass("active");
+                          $(".accrodion-grp." + accrodionName)
+                            .find(".accrodion")
+                            .find(".accrodion-content")
+                            .slideUp();
+                          $(this).parent().addClass("active");
+                          $(this).parent().find(".accrodion-content").slideDown();
+                                    }
+                                });
+                            });
+                        });
+                    }
+
             $(".mobile-nav__toggler").on("click", function (e) {
                 e.preventDefault();
                 $(".mobile-nav__wrapper").toggleClass("expanded");
@@ -358,7 +411,8 @@
             </div>
         </div>
     </div>
-                    <section style="margin-top:80px;" id="seccion_p1s_10">
+                    <section style="padding-top:80px; padding-bottom:40px; background-color:#ffffff"
+                        id="seccion_p1s_10">
                         <div class="container">
                             <div class="row">
                                 <div class="col">
@@ -483,7 +537,8 @@
                                 </div>
                             </div>                        
                         </div>
-                    </div></div></section><section style="margin-top:80px;" id="seccion_p1s_53">
+                    </div></div></section><section style="padding-top:80px; padding-bottom:40px; background-color:#ffffff"
+                        id="seccion_p1s_53">
                         <div class="container">
                             <div class="row">
                                 <div class="col">
@@ -736,7 +791,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div><div class="row" style="margin-top:25px;"></div></div></section><section style="margin-top:80px;" id="seccion_p1s_2">
+                    </div><div class="row" style="margin-top:25px;"></div></div></section><section style="padding-top:80px; padding-bottom:40px; background-color:#F3F0ED"
+                        id="seccion_p1s_2">
                         <div class="container">
                             <div class="row">
                                 <div class="col">
@@ -752,18 +808,14 @@
                             </div>
                             <div class="row" style="margin-top:25px;">
                                 <div class="col col-12">
-                                    <div class="v-item-group theme--light v-expansion-panels"><div aria-expanded="false" class="v-expansion-panel" style="margin-bottom: 20px;
-                        border-radius: 5px;">
-                        <button type="button" class="thm-btn main-slider__btn collapsible"
-                            style="font-size: 20px; text-align: left; width: 100%; border: none;"> Panel 1
-                            <div class="v-expansion-panel-header__icon" style="float: right;">
-                                <i aria-hidden="true" style="height: 30px; width: 30px; top: 
-                                    5px;font-size: 16px; line-height: 33px;"
-                                    class="fa fa-chevron-down"></i>
+                                    <div class="accrodion-grp faq-one-accrodion" 
+                                    data-grp-name="faq-one-accrodion">
+                        <div class="accrodion active">
+                            <div class="accrodion-title">
+                                <h4>Panel 1</h4>
                             </div>
-                        </button>
-                        <div class="v-expansion-panel-content content-expansion-panels" style="display: none;">
-                            <div class="v-expansion-panel-content__wrap"><h2><br></h2><h2>What is Lorem Ipsum?</h2><p><br></p><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p><p><br></p>
+                            <div class="accrodion-content">
+                                <div class="inner"><h2><br></h2><h2>What is Lorem Ipsum?</h2><p><br></p><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p><p><br></p>
                     <div style="margin-top: 15px; padding: 15px 20px; border: 1px solid lightgray; 
                         border-radius: 15px;">
                         <a href="archivos/Pagina_1/Archivo_1_Seccion_2_contenido_3.pdf" 
@@ -779,27 +831,291 @@
                             <span class="fa fa-download" style="float: right;"></span>
                         </a>
                     </div>
-                     </div></div></div><div aria-expanded="false" class="v-expansion-panel" style="margin-bottom: 20px;
-                        border-radius: 5px;">
-                        <button type="button" class="thm-btn main-slider__btn collapsible"
-                            style="font-size: 20px; text-align: left; width: 100%; border: none;"> Pregunta sobre lo que quieras 1
-                            <div class="v-expansion-panel-header__icon" style="float: right;">
-                                <i aria-hidden="true" style="height: 30px; width: 30px; top: 
-                                    5px;font-size: 16px; line-height: 33px;"
-                                    class="fa fa-chevron-down"></i>
+                     </div></div></div>
+                        <div class="accrodion">
+                            <div class="accrodion-title">
+                                <h4>Pregunta sobre lo que quieras 1</h4>
                             </div>
-                        </button>
-                        <div class="v-expansion-panel-content content-expansion-panels" style="display: none;">
-                            <div class="v-expansion-panel-content__wrap"><h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p><br></p> </div></div></div><div aria-expanded="false" class="v-expansion-panel" style="margin-bottom: 20px;
-                        border-radius: 5px;">
-                        <button type="button" class="thm-btn main-slider__btn collapsible"
-                            style="font-size: 20px; text-align: left; width: 100%; border: none;"> Pregunta 2
-                            <div class="v-expansion-panel-header__icon" style="float: right;">
-                                <i aria-hidden="true" style="height: 30px; width: 30px; top: 
-                                    5px;font-size: 16px; line-height: 33px;"
-                                    class="fa fa-chevron-down"></i>
+                            <div class="accrodion-content" style="display: none;">
+                                <div class="inner"><h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p><br></p> </div></div></div>
+                        <div class="accrodion">
+                            <div class="accrodion-title">
+                                <h4>Pregunta 2</h4>
                             </div>
-                        </button>
-                        <div class="v-expansion-panel-content content-expansion-panels" style="display: none;">
-                            <div class="v-expansion-panel-content__wrap"><p>sdiofjhsoidhgoidsfhgiodhoighiodsfhglkdfhgiodff</p><p>fd,gmkdfjoigdfpgcx</p><p>dfkodhfuioklghdc</p> </div></div></div></div></div></section></body>
+                            <div class="accrodion-content" style="display: none;">
+                                <div class="inner"><p>sdiofjhsoidhgoidsfhgiodhoighiodsfhglkdfhgiodff</p><p>fd,gmkdfjoigdfpgcx</p><p>dfkodhfuioklghdc</p> </div></div></div></div></div></div></div></section><section style="padding-top:80px; padding-bottom:40px; background-color:#FFFFFF"
+                        id="seccion_p1s_3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 style="position: relative; color: var(--roofsie-gray);
+                                        font-weight: 800; line-height: 40px; margin-bottom: 10px; ">
+                                            Titulo de la sección de Pestañas Horizontales
+                                    </h2>
+                                    <p style="font-size:18px; color: var(--roofsie-gray);
+                                        line-height:18px; margin-bottom:10px; ">
+                                        Subtitulo de la sección
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:25px;">
+                                <div class="col col-12">
+                                    <nav>
+		                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab-1" 
+                            data-bs-toggle="tab" data-bs-target="#nav-1" type="button" 
+                            role="tab" aria-controls="nav-1" aria-selected="true">Pestaña 1</button>
+                        <button class="nav-link" id="nav-home-tab-2" 
+                            data-bs-toggle="tab" data-bs-target="#nav-2" type="button" 
+                            role="tab" aria-controls="nav-2" aria-selected="false">Pestaña 2</button>
+                        <button class="nav-link" id="nav-home-tab-32" 
+                            data-bs-toggle="tab" data-bs-target="#nav-32" type="button" 
+                            role="tab" aria-controls="nav-32" aria-selected="false">Pestaña 3</button></div>
+		        </nav>
+                <div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-1" role="tabpanel" 
+                            style="padding-top:30px; padding-bottom:30px;"
+                            aria-labelledby="nav-1-tab"><h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><br></p>
+                        <div style="margin-top: 15px; padding: 15px 20px; border: 1px solid lightgray; 
+                            border-radius: 15px;">
+                            <a href="Mi archivo" target = "_blank" style = "width: 100 %; display: block; ">
+                                Archivo_1_Seccion_3_contenido_1.pdf
+                                <span class="fa fa-download" style="float: right;"></span>
+                            </a>
+                        </div></div><div class="tab-pane fade" id="nav-2" role="tabpanel" 
+                            style="padding-top:30px; padding-bottom:30px;"
+                            aria-labelledby="nav-2-tab"><h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p><p><br></p>
+                        <div style="margin-top: 15px; padding: 15px 20px; border: 1px solid lightgray; 
+                            border-radius: 15px;">
+                            <a href="Archivo de prueba" target = "_blank" style = "width: 100 %; display: block; ">
+                                Archivo_1_Seccion_3_contenido_2.pdf
+                                <span class="fa fa-download" style="float: right;"></span>
+                            </a>
+                        </div>
+                        <div style="margin-top: 15px; padding: 15px 20px; border: 1px solid lightgray; 
+                            border-radius: 15px;">
+                            <a href="Otro archivo modificado" target = "_blank" style = "width: 100 %; display: block; ">
+                                Archivo_2_Seccion_3_contenido_2.pdf
+                                <span class="fa fa-download" style="float: right;"></span>
+                            </a>
+                        </div></div><div class="tab-pane fade" id="nav-32" role="tabpanel" 
+                            style="padding-top:30px; padding-bottom:30px;"
+                            aria-labelledby="nav-32-tab"><p>dsfdssdffgdsg</p></div>
+                                </div>
+                            </div>  
+                        </div>
+                    </section><section style="padding-top:80px; padding-bottom:40px; background-color:#F3F0ED" 
+                        id="seccion_p1s_8">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 style="position: relative; color: var(--roofsie-gray);
+                                        font-weight: 800; line-height: 40px; margin-bottom: 10px; ">
+                                            Titulo de la seecion de paneles verticales
+                                    </h2>
+                                    <p style="font-size:18px; color: var(--roofsie-gray);
+                                        line-height:18px; margin-bottom:10px; ">
+                                        Subtitulo
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:25px;">
+                                <div class="col col-12">
+                                    <div class="d-flex align-items-start">
+                                        <div class="nav flex-column" id="v-pills-tab" role="tablist" 
+                                            style="width: 700px;"
+                                            aria-orientation="vertical">
+                        <button class="nav-link active" id="v-pills-53-tab" data-bs-toggle="pill" 
+                            data-bs-target="#v-pills-53" type="button" role="tab" 
+                            aria-controls="v-pills-53" aria-selected="true">Tab 1</button>
+                        <button class="nav-link" id="v-pills-55-tab" data-bs-toggle="pill" 
+                            data-bs-target="#v-pills-55" type="button" role="tab" 
+                            aria-controls="v-pills-55" aria-selected="true">Tab 3</button>
+                        <button class="nav-link" id="v-pills-54-tab" data-bs-toggle="pill" 
+                            data-bs-target="#v-pills-54" type="button" role="tab" 
+                            aria-controls="v-pills-54" aria-selected="true">Tab 2</button></div>
+                <div class="tab-content" id="v-pills-tabContent"><div class="tab-pane fade show active" id="v-pills-53" role ="tabpanel" 
+                            style="padding-left: 30px; padding-bottom: 10px; padding-right: 5px; padding-top: 10px;"
+                            aria-labelledby="v-pills-53-tab" tabindex="0"><h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p><br></p>
+                        <div style="margin-top: 15px; padding: 15px 20px; border: 1px solid lightgray; 
+                            border-radius: 15px;">
+                            <a href="Descarga de prueba" target = "_blank" style = "width: 100 %; display: block; ">
+                                Archivo_1_Seccion_8_contenido_53.pdf
+                                <span class="fa fa-download" style="float: right;"></span>
+                            </a>
+                        </div></div><div class="tab-pane fade" id="v-pills-55" role ="tabpanel" 
+                            style="padding-left: 30px; padding-bottom: 10px; padding-right: 5px; padding-top: 10px;"
+                            aria-labelledby="v-pills-55-tab" tabindex="0"><h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p><br></p></div><div class="tab-pane fade" id="v-pills-54" role ="tabpanel" 
+                            style="padding-left: 30px; padding-bottom: 10px; padding-right: 5px; padding-top: 10px;"
+                            aria-labelledby="v-pills-54-tab" tabindex="0"><h2>What is Lorem Ipsum?</h2><p class="ql-align-justify"><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p><br></p></div>
+                                </div>
+                            </div>  
+                        </div>
+                    </section><section style="padding-top:80px; padding-bottom:40px; background-color:#FFFFFF"
+                        id="seccion_p1s_4" class="gallery-page">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h2 style="position: relative; color: var(--roofsie-gray);
+                                        font-weight: 800; line-height: 40px; margin-bottom: 10px; ">
+                                            Galeria de Imagenes
+                                    </h2>
+                                    <p style="font-size:18px; color: var(--roofsie-gray);
+                                        line-height:18px; margin-bottom:10px; ">
+                                        Subtituo de la galeria de imagenes
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:25px;">
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_1_Seccion_4.png" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_1_Seccion_4.png">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_2_Seccion_4.jpg" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_2_Seccion_4.jpg">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_3_Seccion_4.jpg" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_3_Seccion_4.jpg">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_4_Seccion_4.jpg" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_4_Seccion_4.jpg">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_5_Seccion_4.png" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_5_Seccion_4.png">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_6_Seccion_4.png" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_6_Seccion_4.png">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_7_Seccion_4.jpg" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_7_Seccion_4.jpg">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_8_Seccion_4.jpg" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_8_Seccion_4.jpg">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_9_Seccion_4.jpg" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_9_Seccion_4.jpg">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp animated" 
+                            data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; 
+                            animation-name: fadeInUp;">
+                            <div class="gallery-page__single">
+                                <div class="gallery-page__img">
+                                    <img src="img/Pagina_1/Imagen_10_Seccion_4.png" alt="">
+                                    <div class="gallery-page__icon">
+                                        <a class="img-popup" href="img/Pagina_1/Imagen_10_Seccion_4.png">
+                                            <span class="fas fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section></body>
                     </html>
