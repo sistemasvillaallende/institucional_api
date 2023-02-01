@@ -776,19 +776,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mvelez\\.nuget\\packages\\": {}
+    "C:\\Users\\Martin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\NET2018\\Web_Institucional_Api\\Web_Institucional_Api\\Web_Institucional_Api.csproj",
+      "projectUniqueName": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\Web_Institucional_Api.csproj",
       "projectName": "Web_Institucional_Api",
-      "projectPath": "C:\\NET2018\\Web_Institucional_Api\\Web_Institucional_Api\\Web_Institucional_Api.csproj",
-      "packagesPath": "C:\\Users\\mvelez\\.nuget\\packages\\",
-      "outputPath": "C:\\NET2018\\Web_Institucional_Api\\Web_Institucional_Api\\obj\\",
+      "projectPath": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\Web_Institucional_Api.csproj",
+      "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
+      "outputPath": "D:\\NET2022\\institucional_api\\Web_Institucional_Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mvelez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -849,7 +849,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.308\\RuntimeIdentifierGraph.json"
       }
     }
   }

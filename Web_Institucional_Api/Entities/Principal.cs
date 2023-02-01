@@ -9,7 +9,7 @@
                     <html lang=""en"" style=""overflow-x:hidden;"">";
             html += crearHead();
             html += crearBody();
-            html += Entities.Componentes.Header1.read(1);
+            html += Entities.Componentes.Header3.read(1);
             html += Entities.Componentes.Carrusel.get(1);
             html += Entities.Componentes.Cards.getCards(idPagina, 10);
             html += Entities.Componentes.Cards2.getCards(idPagina, 53);
